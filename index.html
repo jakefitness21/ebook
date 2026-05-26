@@ -1,0 +1,2264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Absolute Beginner's Guide to Strength Training</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+/* ── PRINT / PAGE SETUP ── */
+@page {
+  size: 8.5in 11in;
+  margin: 0;
+}
+
+* {
+  margin: 0; padding: 0;
+  box-sizing: border-box;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ── DESIGN TOKENS ── */
+:root {
+  --black:    #0f0f0f;
+  --white:    #fafaf8;
+  --accent:   #E8362A;
+  --mid:      #1c1c1c;
+  --muted:    #6b6b6b;
+  --border:   rgba(255,255,255,0.08);
+  --card-bg:  #1a1a1a;
+  --tag-bg:   rgba(232,54,42,0.12);
+
+  /* US Letter at 96 dpi = 816 × 1056 px */
+  --pw: 816px;
+  --ph: 1056px;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--black);
+  color: var(--white);
+  width: var(--pw);
+  margin: 0 auto;
+}
+
+/* ── CHAPTER / SECTION WRAPPER ── */
+/* Each .chapter is exactly one page (or starts a new page) */
+.chapter {
+  width: var(--pw);
+  min-height: var(--ph);
+  position: relative;
+  page-break-before: always;
+  page-break-after: always;
+  overflow: hidden;
+  background: var(--black);
+}
+
+.chapter:first-child {
+  page-break-before: avoid;
+}
+
+/* For chapters whose content overflows onto extra pages naturally */
+.chapter.flow {
+  min-height: var(--ph);
+  page-break-after: auto;
+  overflow: visible;
+}
+
+/* ── COVER ── */
+.cover-chapter {
+  width: var(--pw);
+  height: var(--ph);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 52px 56px 64px;
+  background: linear-gradient(160deg, #0f0f0f 40%, #1a0000 100%);
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+}
+
+.cover-chapter::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 520px; height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,54,42,0.13) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cover-deco {
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  padding: 40px 44px 40px 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.cover-deco-word {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 114px;
+  line-height: 1;
+  color: rgba(232,54,42,0.077);
+  letter-spacing: 0.04em;
+  text-align: right;
+}
+
+.cover-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 22px;
+}
+
+.cover-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 88px;
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  color: var(--white);
+  margin-bottom: 24px;
+}
+
+.cover-title span { color: var(--accent); }
+
+.cover-subtitle {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(250,250,248,0.6);
+  margin-bottom: 36px;
+  max-width: 440px;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+}
+
+.cover-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.cover-pill {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border: 1px solid rgba(232,54,42,0.35);
+  border-radius: 100px;
+  color: var(--accent);
+  background: rgba(232,54,42,0.06);
+}
+
+.cover-author {
+  font-size: 11px;
+  color: rgba(250,250,248,0.4);
+  font-weight: 300;
+}
+
+.cover-author strong {
+  color: rgba(250,250,248,0.75);
+  font-weight: 500;
+}
+
+/* ── TOC PAGE ── */
+.toc-chapter {
+  width: var(--pw);
+  height: var(--ph);
+  background: var(--mid);
+  padding: 64px 56px;
+  page-break-after: always;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.toc-chapter h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 52px;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  margin-bottom: 40px;
+  line-height: 1;
+}
+
+.toc-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  max-width: 480px;
+}
+
+.toc-item {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.toc-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--accent);
+  min-width: 24px;
+}
+
+.toc-name {
+  font-size: 14px;
+  color: rgba(250,250,248,0.65);
+}
+
+/* ── CHAPTER HEADER BANNER ── */
+.ch-banner {
+  background: var(--mid);
+  border-bottom: 1px solid var(--border);
+  padding: 44px 56px 36px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.ch-banner::after {
+  content: attr(data-num);
+  position: absolute;
+  right: 36px; top: 20px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 120px;
+  line-height: 1;
+  color: rgba(255,255,255,0.03);
+  pointer-events: none;
+}
+
+.ch-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ch-tag::before {
+  content: '';
+  display: block;
+  width: 24px; height: 1px;
+  background: var(--accent);
+}
+
+.ch-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 52px;
+  line-height: 1;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  margin-bottom: 10px;
+}
+
+.ch-desc {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(250,250,248,0.45);
+  max-width: 520px;
+}
+
+/* ── CHAPTER CONTENT AREA ── */
+.ch-content {
+  padding: 36px 56px 40px;
+}
+
+/* ── STAT GRID ── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 28px;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.stat-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 16px;
+  page-break-inside: avoid;
+  break-inside: avoid;
+  text-align: center;
+}
+
+.stat-value {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 10px;
+  color: rgba(250,250,248,0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: 'DM Mono', monospace;
+}
+
+/* ── BODY TEXT ── */
+p {
+  color: rgba(250,250,248,0.70);
+  font-size: 13px;
+  line-height: 1.72;
+  margin-bottom: 14px;
+}
+
+p:last-child { margin-bottom: 0; }
+
+p strong { color: var(--white); font-weight: 500; }
+
+/* ── CALLOUT ── */
+.callout {
+  border-radius: 10px;
+  padding: 18px 22px;
+  margin: 18px 0;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.callout.accent {
+  background: rgba(232,54,42,0.07);
+  border: 1px solid rgba(232,54,42,0.2);
+}
+
+.callout.info {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.callout-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.callout.info .callout-title { color: rgba(250,250,248,0.5); }
+
+.callout p {
+  font-size: 13px;
+  color: rgba(250,250,248,0.70);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── WORKOUT TABLE ── */
+.workout-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 18px 0 24px;
+  font-size: 13px;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.workout-table th {
+  text-align: left;
+  padding: 8px 14px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(250,250,248,0.4);
+  border-bottom: 1px solid var(--border);
+}
+
+.workout-table td {
+  padding: 11px 14px;
+  color: rgba(250,250,248,0.75);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  vertical-align: middle;
+}
+
+.workout-table tr:last-child td { border-bottom: none; }
+
+.sets-badge {
+  display: inline-block;
+  background: var(--tag-bg);
+  border: 1px solid rgba(232,54,42,0.2);
+  color: var(--accent);
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  border-radius: 5px;
+  padding: 2px 7px;
+}
+
+/* ── DIVIDER LABEL ── */
+.divider-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0 18px;
+}
+
+.divider-label::before, .divider-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.divider-label span {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* ── EXERCISE CARD ── */
+.exercise-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.exercise-header {
+  padding: 16px 22px 13px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.exercise-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.exercise-purpose {
+  font-size: 11px;
+  color: rgba(250,250,248,0.40);
+  font-weight: 300;
+}
+
+.exercise-badge-group {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.ex-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.ex-badge.sets {
+  background: rgba(232,54,42,0.1);
+  border: 1px solid rgba(232,54,42,0.22);
+  color: var(--accent);
+}
+
+.ex-badge.reps {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(250,250,248,0.55);
+}
+
+.exercise-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.ex-col {
+  padding: 14px 18px;
+  border-right: 1px solid var(--border);
+}
+
+.ex-col:last-child { border-right: none; }
+
+.ex-col-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.ex-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ex-list li {
+  font-size: 11px;
+  line-height: 1.5;
+  color: rgba(250,250,248,0.62);
+  padding-left: 14px;
+  position: relative;
+}
+
+.ex-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: #4CAF50;
+  font-size: 9px;
+  top: 1px;
+}
+
+.ex-list.cues li::before {
+  color: rgba(250,250,248,0.80);
+}
+
+.ex-list.avoid li::before {
+  color: var(--accent);
+}
+
+/* ── GUIDELINES ── */
+.guideline-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.guideline-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 14px 18px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.guideline-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 24px;
+  color: var(--accent);
+  line-height: 1;
+  min-width: 22px;
+  padding-top: 2px;
+}
+
+.guideline-text {
+  font-size: 12px;
+  line-height: 1.62;
+  color: rgba(250,250,248,0.65);
+}
+
+.guideline-text strong {
+  color: var(--white);
+  font-weight: 500;
+}
+
+/* ── FORMULA BOX ── */
+.formula-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 14px 0;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.formula-item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: rgba(250,250,248,0.65);
+  line-height: 1.6;
+}
+
+.formula-item span { color: var(--accent); }
+
+/* ── NUTRITION PAGE ── */
+.macro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.macro-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.macro-card-icon {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+
+.macro-card-icon.protein { color: #ffffff; }
+.macro-card-icon.carbs   { color: #ffffff; }
+.macro-card-icon.fats    { color: #ffffff; }
+
+.macro-card p {
+  font-size: 11px;
+  color: rgba(250,250,248,0.55);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.bulk-cut-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.bulk-cut-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.bulk-cut-card h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+
+.bulk-cut-card h4.bulk { color: #ffffff; }
+.bulk-cut-card h4.cut  { color: #ffffff; }
+
+.bulk-cut-card p {
+  font-size: 11px;
+  color: rgba(250,250,248,0.55);
+  line-height: 1.55;
+  margin-bottom: 8px;
+}
+
+.macro-range {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
+.macro-range-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.macro-range-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.macro-range-val {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: rgba(250,250,248,0.75);
+}
+
+.nutr-section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 16px 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nutr-section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── TDEE CALCULATOR ── */
+.tdee-box {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 14px 0;
+}
+
+.tdee-box-header {
+  background: rgba(232,54,42,0.08);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tdee-box-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  line-height: 1;
+}
+
+.tdee-box-subtitle {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-left: auto;
+}
+
+.tdee-body {
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tdee-row {
+  display: grid;
+  gap: 10px;
+}
+
+.tdee-row.cols-2 { grid-template-columns: 1fr 1fr; }
+.tdee-row.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+.tdee-row.cols-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+
+.tdee-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tdee-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.tdee-input,
+.tdee-select {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 6px;
+  padding: 7px 10px;
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.tdee-input:focus,
+.tdee-select:focus {
+  border-color: var(--accent);
+}
+
+.tdee-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%236b6b6b'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 28px;
+  cursor: pointer;
+}
+
+.tdee-select option {
+  background: #1a1a1a;
+  color: var(--white);
+}
+
+/* sex toggle */
+.sex-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.sex-btn {
+  padding: 7px 0;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  transition: background 0.18s, color 0.18s;
+}
+
+.sex-btn.active {
+  background: var(--accent);
+  color: var(--white);
+}
+
+/* height inputs side-by-side */
+.height-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.height-unit {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.height-unit span {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* calc button */
+.tdee-calc-btn {
+  background: var(--accent);
+  border: none;
+  border-radius: 6px;
+  padding: 9px 0;
+  width: 100%;
+  font-family: 'Bebas Neue', sans-serif;
+  scroll-behavior: smooth;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  color: var(--white);
+  cursor: pointer;
+  transition: opacity 0.2s;
+  margin-top: 2px;
+}
+
+.tdee-calc-btn:hover { opacity: 0.85; }
+
+/* results */
+.tdee-results {
+  display: none;
+  border-top: 1px solid var(--border);
+  padding: 14px 18px 16px;
+}
+
+.tdee-results.visible { display: block; }
+
+.tdee-results-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.tdee-results-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+}
+
+.tdee-result-card {
+  border-radius: 8px;
+  padding: 10px 12px;
+  text-align: center;
+}
+
+.tdee-result-card.cut   { background: rgba(125,184,255,0.08); border: 1px solid rgba(125,184,255,0.22); }
+.tdee-result-card.maint { background: rgba(232,54,42,0.08);   border: 1px solid rgba(232,54,42,0.22); }
+.tdee-result-card.bulk  { background: rgba(232,146,42,0.08);  border: 1px solid rgba(232,146,42,0.22); }
+
+.tdee-result-mode {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.tdee-result-card.cut   .tdee-result-mode { color: #7db8ff; }
+.tdee-result-card.maint .tdee-result-mode { color: var(--accent); }
+.tdee-result-card.bulk  .tdee-result-mode { color: #E8922A; }
+
+.tdee-result-kcal {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--white);
+}
+
+.tdee-result-unit {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.tdee-result-note {
+  font-size: 9px;
+  color: rgba(250,250,248,0.35);
+  margin-top: 3px;
+}
+
+.protein-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+  margin-top: 6px;
+  table-layout: fixed;
+}
+
+/* Lock every column to the same width across all 8 category tables */
+.protein-table col.col-food    { width: 32%; }
+.protein-table col.col-portion { width: 20%; }
+.protein-table col.col-cal     { width: 12%; }
+.protein-table col.col-carbs   { width: 12%; }
+.protein-table col.col-fat     { width: 12%; }
+.protein-table col.col-protein { width: 12%; }
+
+.protein-table th {
+  text-align: right;
+  padding: 6px 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(250,250,248,0.35);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.protein-table th:first-child  { text-align: left; }
+.protein-table th:nth-child(2) { text-align: left; }
+
+.protein-table td {
+  padding: 6px 8px;
+  color: rgba(250,250,248,0.72);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  vertical-align: middle;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.protein-table td:first-child  { text-align: left; white-space: normal; }
+.protein-table td:nth-child(2) { text-align: left; }
+
+.protein-table tr:last-child td { border-bottom: none; }
+
+.protein-table .food-name { color: var(--white); font-weight: 500; }
+
+.protein-table .portion-col {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: rgba(250,250,248,0.50);
+}
+
+.protein-table .protein-val {
+  font-family: 'DM Mono', monospace;
+  color: var(--accent);
+  font-size: 11px;
+}
+
+.protein-table .cal-val {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: rgba(250,250,248,0.55);
+}
+
+
+/* ── PORTION INPUT CONTROLS ── */
+.portion-input-cell { text-align: left; padding: 3px 8px; white-space: nowrap; }
+.portion-ctrl { display: flex; align-items: center; gap: 3px; }
+.portion-num {
+  width: 46px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 4px;
+  color: var(--white);
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  padding: 2px 4px;
+  text-align: right;
+  outline: none;
+  -moz-appearance: textfield;
+}
+.portion-num::-webkit-inner-spin-button,
+.portion-num::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.portion-num:focus { border-color: rgba(232,54,42,0.5); background: rgba(232,54,42,0.06); }
+.portion-unit {
+  background: #2a2a2a;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 4px;
+  color: rgba(250,250,248,0.65);
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  padding: 2px 3px;
+  outline: none;
+  cursor: pointer;
+  max-width: 100px;
+}
+.portion-unit:focus { border-color: rgba(232,54,42,0.5); }
+
+/* ── SUPPLEMENTS ── */
+.supp-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 16px;
+  flex: 1;
+}
+
+.supp-row {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 0 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.supp-row:last-child {
+  border-bottom: none;
+}
+
+.supp-category {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.supp-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.supp-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 13px;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.supp-card h4 {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 3px;
+}
+
+.supp-card p {
+  font-size: 10px;
+  color: rgba(250,250,248,0.42);
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* ── DISCLAIMER ── */
+.disclaimer-content {
+  padding: 40px 56px;
+}
+
+.disclaimer-content h4 {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.disclaimer-content p {
+  font-size: 11px;
+  line-height: 1.7;
+  color: rgba(250,250,248,0.3);
+}
+
+.disclaimer-content ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 10px 0 16px;
+}
+
+.disclaimer-content li {
+  font-size: 11px;
+  color: rgba(250,250,248,0.3);
+  padding-left: 14px;
+  position: relative;
+  line-height: 1.55;
+}
+
+.disclaimer-content li::before {
+  content: '·';
+  position: absolute;
+  left: 3px;
+}
+
+/* ── FOOTER BAR ── */
+.footer-bar {
+  padding: 28px 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border);
+  background: var(--black);
+}
+
+.footer-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  color: rgba(250,250,248,0.25);
+}
+
+.footer-logo span { color: var(--accent); }
+
+.footer-contact {
+  font-size: 10px;
+  color: rgba(250,250,248,0.22);
+  font-family: 'DM Mono', monospace;
+  text-align: right;
+  line-height: 1.8;
+}
+
+/* ── SECTION H2 ── */
+h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  margin-bottom: 16px;
+  line-height: 1;
+}
+
+
+/* ── EXERCISE VIDEO ROW ── */
+.ex-video-row {
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+}
+.ex-video-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 20px 18px 14px 18px;
+  white-space: nowrap;
+  min-width: 80px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--border);
+}
+.ex-video-wrap {
+  flex: 1;
+  padding: 12px 18px;
+}
+.ex-video-wrap lite-youtube {
+  width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #000;
+}
+.ex-video-wrap lite-youtube::part(button) {
+  background-color: var(--accent);
+}
+
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.2/src/lite-yt-embed.css">
+<script defer src="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.2/src/lite-yt-embed.js"></script>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 1 — COVER
+══════════════════════════════════════════════════════════ -->
+<div class="cover-chapter">
+  <div class="cover-deco">
+    <div class="cover-deco-word">PASSION</div>
+    <div class="cover-deco-word">STRENGTH</div>
+    <div class="cover-deco-word">POWER</div>
+    <div class="cover-deco-word">VICTORY</div>
+  </div>
+  <div class="cover-eyebrow">@jake_fitness21 · NASM-CPT &amp; CNC</div>
+  <h1 class="cover-title">
+    The Absolute<br>
+    Beginner's Guide<br>
+    to <span>Strength</span><br>
+    Training
+  </h1>
+  <p class="cover-subtitle"><strong>EFFECTIVE</strong> Workouts • <strong>SMART</strong> Progression • <strong>REAL</strong> Results</p>
+  <div class="cover-meta">
+    <span class="cover-pill">Full Body Hypertrophy</span>
+    <span class="cover-pill">3 Days / Week</span>
+    <span class="cover-pill">45 - 60 Minute Sessions</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 2 — TABLE OF CONTENTS
+══════════════════════════════════════════════════════════ -->
+<div class="toc-chapter">
+  <div class="section-label">Contents</div>
+  <h2>What's Inside</h2>
+  <div class="toc-grid">
+    <div class="toc-item"><span class="toc-num">01</span><a href="#ch01" class="toc-name" style="color:inherit;text-decoration:none;">Program Overview &amp; Disclaimer</a></div>
+    <div class="toc-item"><span class="toc-num">02</span><a href="#ch02" class="toc-name" style="color:inherit;text-decoration:none;">Training Guidelines</a></div>
+    <div class="toc-item"><span class="toc-num">03</span><a href="#ch03" class="toc-name" style="color:inherit;text-decoration:none;">Full Body A - Push &amp; Squat</a></div>
+    <div class="toc-item"><span class="toc-num">04</span><a href="#ch04" class="toc-name" style="color:inherit;text-decoration:none;">Full Body B - Pull &amp; Hinge</a></div>
+    <div class="toc-item"><span class="toc-num">05</span><a href="#ch05" class="toc-name" style="color:inherit;text-decoration:none;">Full Body C - Core &amp; Knee</a></div>
+    <div class="toc-item"><span class="toc-num">06</span><a href="#ch06" class="toc-name" style="color:inherit;text-decoration:none;">Nutrition, Protein, and Hydration</a></div>
+    <div class="toc-item"><span class="toc-num">07</span><a href="#ch07" class="toc-name" style="color:inherit;text-decoration:none;">Supplement Recommendations</a></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 3 — CHAPTER 01: PROGRAM OVERVIEW & DISCLAIMER
+══════════════════════════════════════════════════════════ -->
+<div id="ch01" class="chapter" style="page-break-before: always; display:flex; flex-direction:column; background:var(--black);">
+  <div class="ch-banner" data-num="01">
+    <div class="ch-tag">Chapter 01</div>
+    <div class="ch-title">Program Overview &amp; Disclaimer</div>
+    <div class="ch-desc">Everything you need to know before your first session.</div>
+  </div>
+  <div class="ch-content">
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-value">3</div><div class="stat-label">Days per Week</div></div>
+      <div class="stat-card"><div class="stat-value">45 - 60</div><div class="stat-label">Minutes per Session</div></div>
+      <div class="stat-card"><div class="stat-value">3</div><div class="stat-label">Workouts (A,B,C)</div></div>
+      <div class="stat-card"><div class="stat-value">Beginner</div><div class="stat-label">Training Level</div></div>
+    </div>
+    <p>This is a 3 day per week program. Complete each workout (Fullbody A, Fullbody B, and Fullbody C) once per week. I recommend having at least one rest day in between each workout. I also recommend a general warm up before each workout to activate key muscles, improve movement quality, and reduce risk of injury. For an optimal warm up, I recommend 10 - 15 minutes of light cardio paired with stretching and/or foam rolling muscles that are tight.</p>
+    <div class="callout accent">
+      <div class="callout-title">JakeFitness Tip</div>
+      <p>Most exercises can be done on machines or with free weights. I've listed my recommendations, but try different variations and stick with what feels most comfortable and engaging for your body.</p>
+    </div>
+      <h4>Disclaimer &amp; Assumption of Risk</h4><br>
+      <p>This online strength training ebook and all related materials (the “Program”) are provided by Jake Obradovic for educational and informational purposes only. The Program is not medical advice and is not intended to diagnose, treat, cure, or prevent any disease, injury, or condition. Jake Obradovic is not a medical professional and it is recommended to consult a medical professional before starting this or any exercise or nutrition program, especially if you have any pre-existing medical condition, injury, or concern.</p>
+      <ul>
+        <li><p>Participation in the Program is voluntary and entirely at your own risk. Exercise and dietary changes involve inherent risks, including but not limited to injury, illness, adverse health events, permanent disability, or death. You assume full responsibility for all risks, losses, injuries, or damages arising from your participation in or reliance on the Program.</p></li>
+        <li><p>You are solely responsible for using proper judgment, exercise form, safe equipment, and an appropriate environment. <strong>STOP IMMEDIATELY</strong> and seek medical attention if you experience pain, dizziness, chest pain, shortness of breath, faintness, nausea, or unusual discomfort.</p></li>
+        <li><p>This Program does not guarantee results. Individual outcomes vary based on genetics, effort, consistency, nutrition, lifestyle, and other factors.</p></li>
+        <li><p>This Program is intended for individuals 18 years or older, or minors with parent/guardian consent.</p></li>
+        <li><p>All Program materials are intellectual property of Jake Obradovic and may not be copied, sold, shared, or redistributed without written permission.</p></li>
+        <li><p>To the fullest extent permitted by law, Jake Obradovic and any affiliates shall not be liable for any claims, injuries, losses, or damages arising from use of or inability to access the Program. You agree to release and hold harmless Jake Obradovic from any such claims.</p></li>
+        <li><p>By accessing or participating in the Program, you acknowledge that you have read, understood, and voluntarily agreed to be bound by this Disclaimer.</p></li>
+      </ul>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 4 — CHAPTER 02: TRAINING GUIDELINES
+══════════════════════════════════════════════════════════ -->
+<div id="ch02" class="chapter flow" style="page-break-before: always; background:var(--black);">
+  <div class="ch-banner" data-num="02">
+    <div class="ch-tag">Chapter 02</div>
+    <div class="ch-title">Training Guidelines</div>
+    <div class="ch-desc">The principles that drive every rep, set, and session.</div>
+  </div>
+  <div class="ch-content">
+    <ul class="guideline-list">
+      <li class="guideline-item">
+        <span class="guideline-num">1</span>
+        <div class="guideline-text"><strong>Start light.</strong> When starting a new exercise, always start with a lighter weight to get a feel for the range of motion and muscle contraction. I recommend lifting with a slow and controlled pace - focusing on maintaining good form, full range of motion, and mind muscle connection.</div>
+      </li>
+      <li class="guideline-item">
+        <span class="guideline-num">2</span>
+        <div class="guideline-text"><strong>Rep ranges should be a real challenge.</strong> With the example rep range of 10 - 15, the 10th to 15th rep should be challenging to complete while still maintaining good form. If you can't lift the weight for at least 10 reps with good form then decrease the weight, it’s too heavy. On the reverse, if you can lift the weight for 15+ reps without pushing yourself or trying too hard then you need to increase the weight. <strong>Apply this logic to all rep ranges.</strong></div>
+      </li>
+      <li class="guideline-item">
+        <span class="guideline-num">3</span>
+        <div class="guideline-text"><strong>Progressive overload every session.</strong> Let’s say you squat 135lbs for 10 reps. The next workout that you do squats, push yourself to squat 135lbs for 11 reps. If you get that extra rep, great! Then next time you squat, push yourself to squat 135lbs for 12 reps. If you couldn't lift it for 11 reps then try for 11 reps again the next workout. Increase reps first, before increasing the amount of weight. Quality movement always comes before adding weight. <strong>Apply this across all exercises.</strong> Your reps WILL NOT increase EVERY workout but if you keep pushing yourself and consume adequate nutrition, your strength and muscle mass WILL increase over time. 
+</div>
+      </li>
+      <li class="guideline-item">
+        <span class="guideline-num">4</span>
+        <div class="guideline-text"><strong>Rest 1 - 2 minutes between sets.</strong> Adjust based on how you're recovering. Rest a little longer for heavier compound lifts, rest a little less for isolation work.
+        </div>
+      </li>
+      <li class="guideline-item">
+        <span class="guideline-num">5</span>
+        <div class="guideline-text"><strong>Track everything.</strong> I HIGHLY RECOMMEND logging your workouts (write down the exercises, amount of weight lifted, and sets/reps completed). I also highly recommend logging your nutrition (calories & protein), taking weekly progression pictures, tracking weekly bodyweight, and monthly body part measurements in order to track progress. </div>
+      </li>
+      <li class="guideline-item">
+        <span class="guideline-num">6</span>
+        <div class="guideline-text"><strong>To increase intensity:</strong> add reps, weight, or sets over time. You can also train closer to failure, shorten rest times, or incorporate pause reps, supersets, and drop sets. Adjust your volume and intensity (number of sets, amount of weight, rep ranges, rest time) according to your muscle soreness and recovery time. Increase volume and intensity as your body allows, listen to your body and learn your limits.</div>
+      </li>
+    </ul>
+    <!--
+    <div class="callout info">
+      <div class="callout-title">Protein Target</div>
+      <p>Aim for <strong>1g of protein per 1lb of bodyweight</strong> daily to maximize muscle growth.</p>
+      <div class="formula-box" style="margin-top:12px;">
+        <div class="formula-item">Bodyweight (lb) × <span>0.8–1.0</span><br>= Daily protein (g)</div>
+        <div class="formula-item">Bodyweight (kg) × <span>1.8–2.2</span><br>= Daily protein (g)</div>
+      </div>
+    </div>
+    -->
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 5 — CHAPTER 03: FULL BODY A (overview + exercises 1–3)
+══════════════════════════════════════════════════════════ -->
+<div id="ch03" class="chapter flow" style="page-break-before: always; background:var(--black);">
+  <div class="ch-banner" data-num="03">
+    <div class="ch-tag">Chapter 03</div>
+    <div class="ch-title">Full Body A</div>
+    <div class="ch-desc">Push (Chest, Shoulders, Triceps) &amp; Legs - Squat Emphasis</div>
+  </div>
+  <div class="ch-content">
+    <table class="workout-table">
+      <thead>
+        <tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Goblet Squat</td><td><span class="sets-badge">2</span></td><td>8–12</td></tr>
+        <tr><td>Chest Press Machine</td><td><span class="sets-badge">3</span></td><td>8–12</td></tr>
+        <tr><td>V-Squat Machine</td><td><span class="sets-badge">3</span></td><td>10–15</td></tr>
+        <tr><td>Dumbbell Shoulder Press</td><td><span class="sets-badge">2</span></td><td>10–15</td></tr>
+        <tr><td>Tricep Rope Pushdown</td><td><span class="sets-badge">2</span></td><td>10–15</td></tr>
+      </tbody>
+    </table>
+    <div class="divider-label"><span>Exercises</span></div>
+
+    <!-- Goblet Squat -->
+    <div class="exercise-card">
+      <div class="exercise-header">
+        <div><div class="exercise-name">Goblet Squat</div><div class="exercise-purpose">Builds leg and glute strength while improving squat mechanics</div></div>
+        <div class="exercise-badge-group"><span class="ex-badge sets">2 sets</span><span class="ex-badge reps">8–12 reps</span></div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-col"><div class="ex-col-label">Instructions</div><ul class="ex-list"><li>Hold dumbbell/kettlebell vertically against chest</li><li>Feet shoulder-width, toes slightly out</li><li>Hinge at hips, bend knees, chest tall</li><li>Lower until thighs parallel — press through heels</li></ul></div>
+        <div class="ex-col"><div class="ex-col-label">Form Cues</div><ul class="ex-list cues"><li>Push knees out, tracking over toes</li><li>Keep heels planted throughout</li><li>Neutral spine, chest upright</li><li>Inhale down, exhale up</li></ul></div>
+        <div class="ex-col"><div class="ex-col-label">Avoid</div><ul class="ex-list avoid"><li>Knees caving inward</li><li>Rounding chest or lower back</li><li>Heels lifting off the ground</li></ul></div>
+      </div>
+    </div>
+      <div class="ex-video-row">
+        <div class="ex-video-label">Watch</div>
+        <div class="ex-video-wrap">
+          <lite-youtube videoid="sqNwDkUU_Ps" playlabel="Watch exercise demonstration"></lite-youtube>
+        </div>
+      </div>
+
+    <!-- Chest Press Machine -->
+    <div class="exercise-card">
+      <div class="exercise-header">
+        <div><div class="exercise-name">Chest Press Machine</div><div class="exercise-purpose">Strengthens chest, shoulders, and triceps</div></div>
+        <div class="exercise-badge-group"><span class="ex-badge sets">3 sets</span><span class="ex-badge reps">8–12 reps</span></div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-col"><div class="ex-col-label">Instructions</div><ul class="ex-list"><li>Sit with back fully supported, feet flat</li><li>Adjust handles to chest height</li><li>Press forward until elbows almost straight</li><li>Slowly return to starting position</li></ul></div>
+        <div class="ex-col"><div class="ex-col-label">Form Cues</div><ul class="ex-list cues"><li>Elbows at ~30–45° from torso</li><li>Shoulder blades down and back</li><li>Control the lowering phase</li></ul></div>
+        <div class="ex-col"><div class="ex-col-label">Avoid</div><ul class="ex-list avoid"><li>Flaring elbows too wide</li><li>Using momentum to push</li><li>Excessive lower back arch</li></ul></div>
+      </div>
+    </div>
+      <div class="ex-video-row">
+        <div class="ex-video-label">Watch</div>
+        <div class="ex-video-wrap">
+          <lite-youtube videoid="sqNwDkUU_Ps" playlabel="Watch exercise demonstration"></lite-youtube>
+        </div>
+      </div>
+
+    <!-- V-Squat Machine -->
+    <div class="exercise-card">
+      <div class="exercise-header">
+        <div><div class="exercise-name">V-Squat Machine</div><div class="exercise-purpose">Strengthens quads, hamstrings, and glutes with guided movement</div></div>
+        <div class="exercise-badge-group"><span class="ex-badge sets">3 sets</span><span class="ex-badge reps">10–15 reps</span></div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-col"><div class="ex-col-label">Instructions</div><ul class="ex-list"><li>Shoulders under pads, feet shoulder-width</li><li>Brace core, unlock safety handle</li><li>Lower until thighs parallel — drive through heels</li><li>Re-engage safety after set</li></ul></div>
+        <div class="ex-col"><div class="ex-col-label">Form Cues</div><ul class="ex-list cues"><li>Chest up, back against pad at all times</li><li>Knees track in line with toes</li><li>Push through heels and mid-foot</li></ul></div>
+        <div class="ex-col"><div class="ex-col-label">Avoid</div><ul class="ex-list avoid"><li>Knees caving inward</li><li>Back lifting off the pad</li><li>Heels lifting or bouncing at bottom</li></ul></div>
+      </div>
+    </div>
+      <div class="ex-video-row">
+        <div class="ex-video-label">Watch</div>
+        <div class="ex-video-wrap">
+          <lite-youtube videoid="sqNwDkUU_Ps" playlabel="Watch exercise demonstration"></lite-youtube>
+        </div>
+      </div>
+
+    <!-- DB Shoulder Press -->
+    <div class="exercise-card">
+      <div class="exercise-header">
+        <div><div class="exercise-name">Dumbbell Shoulder Press</div><div class="exercise-purpose">Strengthens the shoulders while improving stability</div></div>
+        <div class="exercise-badge-group"><span class="ex-badge sets">2 sets</span><span class="ex-badge reps">10–15 reps</span></div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-col"><div class="ex-col-label">Instructions</div><ul class="ex-list"><li>Sit on bench with back support, feet flat</li><li>Dumbbells at shoulder height, palms forward</li><li>Press overhead until arms almost straight</li><li>Slowly return to shoulder height</li></ul></div>
+        <div class="ex-col"><div class="ex-col-label">Form Cues</div><ul class="ex-list cues"><li>Core engaged to protect lower back</li><li>Wrists stacked over elbows throughout</li><li>Shoulder blades down and back</li></ul></div>
+        <div class="ex-col"><div class="ex-col-label">Avoid</div><ul class="ex-list avoid"><li>Excessive lower back arch</li><li>Elbows flaring too wide</li><li>Using momentum or bouncing</li></ul></div>
+      </div>
+    </div>
+      <div class="ex-video-row">
+        <div class="ex-video-label">Watch</div>
+        <div class="ex-video-wrap">
+          <lite-youtube videoid="sqNwDkUU_Ps" playlabel="Watch exercise demonstration"></lite-youtube>
+        </div>
+      </div>
+
+    <!-- Tricep Cable Pushdown -->
+    <div class="exercise-card">
+      <div class="exercise-header">
+        <div><div class="exercise-name">Tricep Cable Pushdown</div><div class="exercise-purpose">Isolates and strengthens the triceps</div></div>
+        <div class="exercise-badge-group"><span class="ex-badge sets">2 sets</span><span class="ex-badge reps">10–15 reps</span></div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-col"><div class="ex-col-label">Instructions</div><ul class="ex-list"><li>Rope/bar on high pulley, stand facing machine</li><li>Elbows tucked at sides at ~90°</li><li>Push to full extension — slowly return</li></ul></div>
+        <div class="ex-col"><div class="ex-col-label">Form Cues</div><ul class="ex-list cues"><li>Elbows fixed at sides throughout</li><li>Chest up, shoulders down</li><li>Only the elbows move</li></ul></div>
+        <div class="ex-col"><div class="ex-col-label">Avoid</div><ul class="ex-list avoid"><li>Elbows flaring or drifting forward</li><li>Leaning body weight into bar</li><li>Letting weight slam back up</li></ul></div>
+      </div>
+    </div>
+      <div class="ex-video-row">
+        <div class="ex-video-label">Watch</div>
+        <div class="ex-video-wrap">
+          <lite-youtube videoid="sqNwDkUU_Ps" playlabel="Watch exercise demonstration"></lite-youtube>
+        </div>
+      </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 6 — CHAPTER 04: FULL BODY B
+══════════════════════════════════════════════════════════ -->
+<div id="ch04" class="chapter flow" style="page-break-before: always; background:var(--black);">
+  <div class="ch-banner" data-num="04">
+    <div class="ch-tag">Chapter 04</div>
+    <div class="ch-title">Full Body B</div>
+    <div class="ch-desc">Pull (Back &amp; Biceps) &amp; Legs - Hinge Emphasis</div>
+  </div>
+  <div class="ch-content">
+    <table class="workout-table">
+      <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr></thead>
+      <tbody>
+        <tr><td>Dumbbell Romanian Deadlift</td><td><span class="sets-badge">3</span></td><td>8–12</td></tr>
+        <tr><td>Seated Cable Row</td><td><span class="sets-badge">3</span></td><td>8–12</td></tr>
+        <tr><td>Smith Machine Hip Thrust</td><td><span class="sets-badge">3</span></td><td>8–12</td></tr>
+        <tr><td>Lat Pulldown Machine</td><td><span class="sets-badge">3</span></td><td>10–15</td></tr>
+        <tr><td>Incline Dumbbell Bicep Curl</td><td><span class="sets-badge">2</span></td><td>10–15</td></tr>
+      </tbody>
+    </table>
+    <div class="divider-label"><span>Exercises</span></div>
+
+    <!-- Romanian Deadlift -->
+    <div class="exercise-card">
+      <div class="exercise-header">
+        <div><div class="exercise-name">Dumbbell Romanian Deadlift</div><div class="exercise-purpose">Strengthens hamstrings, glutes, and lower back</div></div>
+        <div class="exercise-badge-group"><span class="ex-badge sets">3 sets</span><span class="ex-badge reps">8–12 reps</span></div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-col"><div class="ex-col-label">Instructions</div><ul class="ex-list"><li>Dumbbells in front of thighs, feet hip-width</li><li>Hinge hips back, lower along shins</li><li>Lower until hamstring stretch, mid-shin</li><li>Drive hips forward to standing</li></ul></div>
+        <div class="ex-col"><div class="ex-col-label">Form Cues</div><ul class="ex-list cues"><li>Neutral spine — no rounding lower back</li><li>Shoulders pulled back, chest lifted</li><li>Slight knee bend throughout</li></ul></div>
+        <div class="ex-col"><div class="ex-col-label">Avoid</div><ul class="ex-list avoid"><li>Bending knees too much (becomes a squat)</li><li>Rounding the lower back</li><li>Dumbbells drifting away from shins</li></ul></div>
+      </div>
+    </div>
+      <div class="ex-video-row">
+        <div class="ex-video-label">Watch</div>
+        <div class="ex-video-wrap">
+          <lite-youtube videoid="sqNwDkUU_Ps" playlabel="Watch exercise demonstration"></lite-youtube>
+        </div>
+      </div>
+
+    <!-- Seated Cable Row -->
+    <div class="exercise-card">
+      <div class="exercise-header">
+        <div><div class="exercise-name">Seated Cable Row</div><div class="exercise-purpose">Strengthens mid-back and biceps while improving pulling strength</div></div>
+        <div class="exercise-badge-group"><span class="ex-badge sets">3 sets</span><span class="ex-badge reps">8–12 reps</span></div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-col"><div class="ex-col-label">Instructions</div><ul class="ex-list"><li>Feet on platform, knees slightly bent</li><li>Arms fully extended, sit tall</li><li>Pull handle to bellybutton, drive elbows back</li><li>Squeeze shoulder blades — slowly extend</li></ul></div>
+        <div class="ex-col"><div class="ex-col-label">Form Cues</div><ul class="ex-list cues"><li>Neutral spine throughout</li><li>Lead with elbows, not hands</li><li>Shoulders down and back</li></ul></div>
+        <div class="ex-col"><div class="ex-col-label">Avoid</div><ul class="ex-list avoid"><li>Swinging too far back</li><li>Rounding shoulders forward at start</li><li>Pulling bar too high toward chest</li></ul></div>
+      </div>
+    </div>
+      <div class="ex-video-row">
+        <div class="ex-video-label">Watch</div>
+        <div class="ex-video-wrap">
+          <lite-youtube videoid="sqNwDkUU_Ps" playlabel="Watch exercise demonstration"></lite-youtube>
+        </div>
+      </div>
+
+    <!-- Hip Thrust -->
+    <div class="exercise-card">
+      <div class="exercise-header">
+        <div><div class="exercise-name">Smith Machine Hip Thrust</div><div class="exercise-purpose">Builds glutes and improves hip extension strength</div></div>
+        <div class="exercise-badge-group"><span class="ex-badge sets">3 sets</span><span class="ex-badge reps">8–12 reps</span></div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-col"><div class="ex-col-label">Instructions</div><ul class="ex-list"><li>Upper back on bench, bar over hips (use pad)</li><li>Feet flat, hip-width apart</li><li>Drive through heels — thrust hips up parallel</li><li>Squeeze glutes at top, lower slowly</li></ul></div>
+        <div class="ex-col"><div class="ex-col-label">Form Cues</div><ul class="ex-list cues"><li>Chin tucked, ribs down — neutral spine</li><li>Shins nearly vertical at top</li><li>Push through heels, not toes</li></ul></div>
+        <div class="ex-col"><div class="ex-col-label">Avoid</div><ul class="ex-list avoid"><li>Overextending the lower back at top</li><li>Feet too far or too close</li><li>Knees caving inward</li></ul></div>
+      </div>
+    </div>
+      <div class="ex-video-row">
+        <div class="ex-video-label">Watch</div>
+        <div class="ex-video-wrap">
+          <lite-youtube videoid="sqNwDkUU_Ps" playlabel="Watch exercise demonstration"></lite-youtube>
+        </div>
+      </div>
+
+    <!-- Lat Pulldown -->
+    <div class="exercise-card">
+      <div class="exercise-header">
+        <div><div class="exercise-name">Lat Pulldown Machine</div><div class="exercise-purpose">Strengthens lats and biceps</div></div>
+        <div class="exercise-badge-group"><span class="ex-badge sets">3 sets</span><span class="ex-badge reps">10–15 reps</span></div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-col"><div class="ex-col-label">Instructions</div><ul class="ex-list"><li>Thighs under pads, feet flat on floor</li><li>Grip slightly wider than shoulder-width</li><li>Lean back ~10–15°, chest up</li><li>Pull bar to upper chest — slowly release</li></ul></div>
+        <div class="ex-col"><div class="ex-col-label">Form Cues</div><ul class="ex-list cues"><li>Drive elbows down and back</li><li>Chest lifted, shoulder blades engaged</li><li>No swinging or momentum</li></ul></div>
+        <div class="ex-col"><div class="ex-col-label">Avoid</div><ul class="ex-list avoid"><li>Pulling bar behind neck</li><li>Leaning too far back</li><li>Using momentum over muscle</li></ul></div>
+      </div>
+    </div>
+      <div class="ex-video-row">
+        <div class="ex-video-label">Watch</div>
+        <div class="ex-video-wrap">
+          <lite-youtube videoid="sqNwDkUU_Ps" playlabel="Watch exercise demonstration"></lite-youtube>
+        </div>
+      </div>
+
+    <!-- Incline Curl -->
+    <div class="exercise-card">
+      <div class="exercise-header">
+        <div><div class="exercise-name">Incline Dumbbell Bicep Curl</div><div class="exercise-purpose">Isolates and strengthens the biceps</div></div>
+        <div class="exercise-badge-group"><span class="ex-badge sets">2 sets</span><span class="ex-badge reps">10–15 reps</span></div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-col"><div class="ex-col-label">Instructions</div><ul class="ex-list"><li>Bench at 30–45°, head and shoulders supported</li><li>Arms at full extension, palms forward</li><li>Curl toward shoulders — squeeze at top</li><li>Slowly lower back to start</li></ul></div>
+        <div class="ex-col"><div class="ex-col-label">Form Cues</div><ul class="ex-list cues"><li>Shoulders back against the bench</li><li>Elbows stay slightly behind torso</li><li>Move only at the elbow</li></ul></div>
+        <div class="ex-col"><div class="ex-col-label">Avoid</div><ul class="ex-list avoid"><li>Swinging or using momentum</li><li>Elbows drifting forward during curl</li><li>Shortening range of motion at bottom</li></ul></div>
+      </div>
+    </div>
+      <div class="ex-video-row">
+        <div class="ex-video-label">Watch</div>
+        <div class="ex-video-wrap">
+          <lite-youtube videoid="sqNwDkUU_Ps" playlabel="Watch exercise demonstration"></lite-youtube>
+        </div>
+      </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 7 — CHAPTER 05: FULL BODY C
+══════════════════════════════════════════════════════════ -->
+<div id="ch05" class="chapter flow" style="page-break-before: always; background:var(--black);">
+  <div class="ch-banner" data-num="05">
+    <div class="ch-tag">Chapter 05</div>
+    <div class="ch-title">Full Body C</div>
+    <div class="ch-desc">Core &amp; Legs - Knee Emphasis</div>
+  </div>
+  <div class="ch-content">
+    <table class="workout-table">
+      <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr></thead>
+      <tbody>
+        <tr><td>Leg Press (High Feet Placement)</td><td><span class="sets-badge">3</span></td><td>8–12</td></tr>
+        <tr><td>Half Kneeling Landmine Press</td><td><span class="sets-badge">3</span></td><td>8–12</td></tr>
+        <tr><td>Walking Lunges</td><td><span class="sets-badge">2</span></td><td>10–15 / leg</td></tr>
+        <tr><td>Dumbbell Farmer's Carry</td><td><span class="sets-badge">3</span></td><td>30–60 sec</td></tr>
+        <tr><td>Plank with Shoulder Taps</td><td><span class="sets-badge">2</span></td><td>10–20 taps / side</td></tr>
+      </tbody>
+    </table>
+    <div class="divider-label"><span>Exercises</span></div>
+
+    <!-- Leg Press -->
+    <div class="exercise-card">
+      <div class="exercise-header">
+        <div><div class="exercise-name">Leg Press (High Feet Placement)</div><div class="exercise-purpose">Strengthens quads, hamstrings, and glutes with back support</div></div>
+        <div class="exercise-badge-group"><span class="ex-badge sets">3 sets</span><span class="ex-badge reps">8–12 reps</span></div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-col"><div class="ex-col-label">Instructions</div><ul class="ex-list"><li>Sit fully supported, head and back against pad</li><li>Feet shoulder-width on upper platform, toes out</li><li>Release safety, lower to ~90° knee bend</li><li>Drive through heels — re-engage safety after</li></ul></div>
+        <div class="ex-col"><div class="ex-col-label">Form Cues</div><ul class="ex-list cues"><li>Lower back pressed into seat at all times</li><li>Knees track in line with toes</li><li>Feet flat throughout movement</li></ul></div>
+        <div class="ex-col"><div class="ex-col-label">Avoid</div><ul class="ex-list avoid"><li>Locking knees out at top</li><li>Knees caving inward</li><li>Hips rolling off seat at bottom</li></ul></div>
+      </div>
+    </div>
+      <div class="ex-video-row">
+        <div class="ex-video-label">Watch</div>
+        <div class="ex-video-wrap">
+          <lite-youtube videoid="sqNwDkUU_Ps" playlabel="Watch exercise demonstration"></lite-youtube>
+        </div>
+      </div>
+
+    <!-- Landmine Press -->
+    <div class="exercise-card">
+      <div class="exercise-header">
+        <div><div class="exercise-name">Half Kneeling Landmine Press</div><div class="exercise-purpose">Strengthens shoulders, triceps, and core stability</div></div>
+        <div class="exercise-badge-group"><span class="ex-badge sets">3 sets</span><span class="ex-badge reps">8–12 reps</span></div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-col"><div class="ex-col-label">Instructions</div><ul class="ex-list"><li>Barbell in landmine or corner</li><li>Kneel on one knee, other foot forward</li><li>Barbell at shoulder height — brace core</li><li>Press up and forward — slowly lower</li></ul></div>
+        <div class="ex-col"><div class="ex-col-label">Form Cues</div><ul class="ex-list cues"><li>Torso upright, core braced — resist rotation</li><li>Front knee over ankle for stability</li><li>Press through shoulder, not back</li></ul></div>
+        <div class="ex-col"><div class="ex-col-label">Avoid</div><ul class="ex-list avoid"><li>Torso twisting or leaning</li><li>Elbows flaring during press</li><li>Poor foot placement compromising balance</li></ul></div>
+      </div>
+    </div>
+      <div class="ex-video-row">
+        <div class="ex-video-label">Watch</div>
+        <div class="ex-video-wrap">
+          <lite-youtube videoid="sqNwDkUU_Ps" playlabel="Watch exercise demonstration"></lite-youtube>
+        </div>
+      </div>
+
+    <!-- Walking Lunges -->
+    <div class="exercise-card">
+      <div class="exercise-header">
+        <div><div class="exercise-name">Walking Lunges</div><div class="exercise-purpose">Builds quads, glutes, hamstrings — improves balance and coordination</div></div>
+        <div class="exercise-badge-group"><span class="ex-badge sets">2 sets</span><span class="ex-badge reps">10–15 / leg</span></div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-col"><div class="ex-col-label">Instructions</div><ul class="ex-list"><li>Stand tall, feet hip-width (dumbbells optional)</li><li>Step forward — lower until both knees ~90°</li><li>Back knee hovers above floor</li><li>Drive through front heel into next lunge</li></ul></div>
+        <div class="ex-col"><div class="ex-col-label">Form Cues</div><ul class="ex-list cues"><li>Chest up, core engaged throughout</li><li>Front knee tracks in line with toes</li><li>Push through front heel to rise</li></ul></div>
+        <div class="ex-col"><div class="ex-col-label">Avoid</div><ul class="ex-list avoid"><li>Front knee caving inward</li><li>Steps too short or too long</li><li>Pushing off primarily from back foot</li></ul></div>
+      </div>
+    </div>
+      <div class="ex-video-row">
+        <div class="ex-video-label">Watch</div>
+        <div class="ex-video-wrap">
+          <lite-youtube videoid="sqNwDkUU_Ps" playlabel="Watch exercise demonstration"></lite-youtube>
+        </div>
+      </div>
+
+    <!-- Farmer's Carry -->
+    <div class="exercise-card">
+      <div class="exercise-header">
+        <div><div class="exercise-name">Dumbbell Farmer's Carry</div><div class="exercise-purpose">Builds grip, core stability, and full-body functional strength</div></div>
+        <div class="exercise-badge-group"><span class="ex-badge sets">3 sets</span><span class="ex-badge reps">30–60 sec</span></div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-col"><div class="ex-col-label">Instructions</div><ul class="ex-list"><li>Dumbbells at sides, stand tall, brace core</li><li>Walk forward with controlled, steady steps</li><li>Maintain upright posture throughout</li><li>Lower safely by hinging at hips when done</li></ul></div>
+        <div class="ex-col"><div class="ex-col-label">Form Cues</div><ul class="ex-list cues"><li>Chest up, shoulders down — no shrugging</li><li>Core tight, resist lateral lean</li><li>Short controlled steps, head neutral</li></ul></div>
+        <div class="ex-col"><div class="ex-col-label">Avoid</div><ul class="ex-list avoid"><li>Leaning excessively to one side</li><li>Shrugging shoulders toward ears</li><li>Fast, uncontrolled steps</li></ul></div>
+      </div>
+    </div>
+      <div class="ex-video-row">
+        <div class="ex-video-label">Watch</div>
+        <div class="ex-video-wrap">
+          <lite-youtube videoid="sqNwDkUU_Ps" playlabel="Watch exercise demonstration"></lite-youtube>
+        </div>
+      </div>
+
+    <!-- Plank Shoulder Taps -->
+    <div class="exercise-card">
+      <div class="exercise-header">
+        <div><div class="exercise-name">Plank with Shoulder Taps</div><div class="exercise-purpose">Strengthens core and improves anti-rotation stability</div></div>
+        <div class="exercise-badge-group"><span class="ex-badge sets">2 sets</span><span class="ex-badge reps">10–20 / side</span></div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-col"><div class="ex-col-label">Instructions</div><ul class="ex-list"><li>High plank, hands under shoulders, feet hip-width</li><li>Engage core, squeeze glutes — straight body line</li><li>Lift one hand, tap opposite shoulder</li><li>Alternate sides, 1–2 sec per tap</li></ul></div>
+        <div class="ex-col"><div class="ex-col-label">Form Cues</div><ul class="ex-list cues"><li>Hips level — no rocking side to side</li><li>Core braced as if absorbing a hit</li><li>Press the floor away to stabilize shoulders</li></ul></div>
+        <div class="ex-col"><div class="ex-col-label">Avoid</div><ul class="ex-list avoid"><li>Rocking hips during taps</li><li>Lower back sagging</li><li>Raising hips too high</li></ul></div>
+      </div>
+    </div>
+      <div class="ex-video-row">
+        <div class="ex-video-label">Watch</div>
+        <div class="ex-video-wrap">
+          <lite-youtube videoid="sqNwDkUU_Ps" playlabel="Watch exercise demonstration"></lite-youtube>
+        </div>
+      </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 8 — CHAPTER 06: NUTRITION, PROTEIN & HYDRATION
+══════════════════════════════════════════════════════════ -->
+<div id="ch06" class="chapter" style="page-break-before: always; display:flex; flex-direction:column; background:var(--black);">
+  <div class="ch-banner" data-num="06">
+    <div class="ch-tag">Chapter 06</div>
+    <div class="ch-title">Nutrition, Protein &amp; Hydration</div>
+    <div class="ch-desc">Fuel your training and maximize muscle growth.</div>
+  </div>
+  <div class="ch-content">
+    <p>Understanding the three macronutrients - protein, carbs, and fats - is the foundation of any effective diet. You can train perfectly, but without adequate calories and macros, muscle growth and goal progress will be severely limited. </p>
+
+    <div class="nutr-section-label">The Three Macronutrients</div>
+    <div class="macro-grid">
+      <div class="macro-card">
+        <div class="macro-card-icon protein">Protein</div>
+        <p>Builds and repairs muscle tissue. Essential for growth and recovery.</p>
+        <p><strong>Sources:</strong> meat, fish, eggs, dairy, beans.</p>
+        <p>Provides <strong>4 calories</strong> per gram.</p>
+      </div>
+      <div class="macro-card">
+        <div class="macro-card-icon carbs">Carbohydrates</div>
+        <p>Your body's primary energy source - especially for intense training.</p>
+        <p><strong>Sources:</strong> rice, oats, potatoes, fruit, veggies, bread.</p>
+        <p>Provides <strong>4 calories</strong> per gram.</p>
+      </div>
+      <div class="macro-card">
+        <div class="macro-card-icon fats">Fats</div>
+        <p>Supports hormone production, joint health, and vitamin absorption.</p>
+        <p><strong>Sources:</strong> oils, nuts, avocado, fatty fish, eggs.</p>
+        <p>Provides <strong>9 calories</strong> per gram.</p>
+      </div>
+    </div>
+
+    <div class="nutr-section-label">Bulking vs. Cutting</div>
+    <div class="bulk-cut-grid">
+      <div class="bulk-cut-card">
+        <div class="macro-card-icon protein">Bulking</div>
+        <p>Bulking is gaining bodyweight (both muscle and fat) by being in a calorie surplus <strong style="color:rgba(250,250,248,0.85);">(consuming more calories than your body is burning)</strong>. Best for ectomorph/mesomorph body types and those prioritizing strength gains.</p>
+        <div class="macro-range">
+          <div class="macro-range-row"><span class="macro-range-label">Protein</span><span class="macro-range-val">0.8 - 1.0g per lb bodyweight</span></div>
+          <div class="macro-range-row"><span class="macro-range-label">Carbs</span><span class="macro-range-val">40 - 50% of total calories</span></div>
+          <div class="macro-range-row"><span class="macro-range-label">Fats</span><span class="macro-range-val">25 - 35% of total calories</span></div>
+        </div>
+      </div>
+      <div class="bulk-cut-card">
+        <div class="macro-card-icon protein">Cutting</div>
+        <p>Cutting is losing bodyweight (mostly fat while preserving muscle) by being in a calorie deficit <strong>(burning more calories than your are consuming)</strong>. Best for endomorph body types and those wanting to lose fat.</p>
+        <div class="macro-range">
+          <div class="macro-range-row"><span class="macro-range-label">Protein</span><span class="macro-range-val">1.0 - 1.2g per lb bodyweight</span></div>
+          <div class="macro-range-row"><span class="macro-range-label">Carbs</span><span class="macro-range-val">30 - 40% of total calories</span></div>
+          <div class="macro-range-row"><span class="macro-range-label">Fats</span><span class="macro-range-val">20 - 30% of total calories</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── TDEE CALCULATOR ── -->
+    <div class="nutr-section-label" style="margin-top:14px;">Calculate Your Calories</div>
+    <div class="tdee-box" id="tdee-calculator">
+      <div class="tdee-box-header">
+        <div class="tdee-box-title">Calorie Estimator</div>
+        <div class="tdee-box-subtitle"></div>
+      </div>
+      <div class="tdee-body">
+		
+        <div><p>Enter your information below to estimate your daily calories for bulking, maintenance, and cutting.</p></div>
+        
+        <!-- Sex -->
+        <div class="tdee-field">
+          <div class="tdee-label">Select Your Sex</div>
+          <div class="sex-toggle">
+            <button class="sex-btn active" id="btn-male" onclick="selectSex('male')">Male</button>
+            <button class="sex-btn" id="btn-female" onclick="selectSex('female')">Female</button>
+          </div>
+        </div>
+
+        <!-- Age + Weight + Height in one row -->
+        <div class="tdee-row cols-3">
+
+          <!-- Age -->
+          <div class="tdee-field">
+            <label class="tdee-label" for="tdee-age">Age (years)</label>
+            <input class="tdee-input" id="tdee-age" type="number" min="15" max="80" placeholder="Enter your age">
+          </div>
+
+          <!-- Weight -->
+          <div class="tdee-field">
+            <label class="tdee-label" for="tdee-weight">Weight (lbs)</label>
+            <input class="tdee-input" id="tdee-weight" type="number" min="50" max="999" placeholder="Enter your weight (lbs)">
+          </div>
+
+          <!-- Height -->
+          <div class="tdee-field">
+            <label class="tdee-label">Height</label>
+            <div class="height-pair">
+              <div class="height-unit">
+                <input class="tdee-input" id="tdee-ft" type="number" min="3" max="8" placeholder="Feet" style="min-width:0;">
+                <span>ft</span>
+              </div>
+              <div class="height-unit">
+                <input class="tdee-input" id="tdee-in" type="number" min="0" max="11" placeholder="Inches" style="min-width:0;">
+                <span>in</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Activity Level -->
+        <div class="tdee-field">
+          <label class="tdee-label" for="tdee-activity">Current Activity Level</label>
+          <select class="tdee-select" id="tdee-activity">
+            <option value="" disabled selected hidden>Select your current activity level</option>
+            <option value="1.2">Sedentary - Little or no exercise, desk job</option>
+            <option value="1.375">Lightly Active - Light exercise 1-3 days/week</option>
+            <option value="1.55">Moderately Active - Moderate exercise 3-5 days/week</option>
+            <option value="1.725">Very Active - Hard exercise 6-7 days/week, or very physical job</option>
+            <option value="1.9">High Performance - 2× hard training/day, competitive athletes</option>
+          </select>
+        </div>
+
+        <!-- Button -->
+        <button class="tdee-calc-btn" onclick="calcTDEE()">Calculate</button>
+
+        <!-- Error -->
+        <div id="tdee-error" style="display:none; font-family:'DM Mono',monospace; font-size:10px; color:var(--accent); text-align:center; margin-top:-6px;"></div>
+      </div>
+
+      <!-- Results -->
+      <div class="tdee-results" id="tdee-results">
+        <div class="tdee-results-title">Your <strong>Estimated</strong> Daily Calories</div>
+        <div class="tdee-results-grid">
+          <div class="tdee-result-card cut">
+            <div class="tdee-result-mode">Cutting</div>
+            <div class="tdee-result-kcal" id="res-cut">—</div>
+            <div class="tdee-result-unit">cal / day</div>
+          </div>
+          <div class="tdee-result-card maint">
+            <div class="tdee-result-mode">Maintenance</div>
+            <div class="tdee-result-kcal" id="res-maint">—</div>
+            <div class="tdee-result-unit">cal / day</div>
+          </div>
+          <div class="tdee-result-card bulk">
+            <div class="tdee-result-mode">Bulking</div>
+            <div class="tdee-result-kcal" id="res-bulk">—</div>
+            <div class="tdee-result-unit">cal / day</div>
+          </div>
+        </div>
+        <div id="tdee-bmr-line" style="margin-top:8px; font-family:'DM Mono',monospace; font-size:9px; color:var(--muted); text-align:center;"></div>
+      </div>
+    </div>
+
+    <script>
+    var tdeeSex = 'male';
+
+    function selectSex(s) {
+      tdeeSex = s;
+      document.getElementById('btn-male').className   = 'sex-btn' + (s === 'male'   ? ' active' : '');
+      document.getElementById('btn-female').className = 'sex-btn' + (s === 'female' ? ' active' : '');
+    }
+
+    function calcTDEE() {
+      var errEl = document.getElementById('tdee-error');
+      errEl.style.display = 'none';
+
+      var age    = parseFloat(document.getElementById('tdee-age').value);
+      var lbs    = parseFloat(document.getElementById('tdee-weight').value);
+      var ft     = parseFloat(document.getElementById('tdee-ft').value);
+      var inches = parseFloat(document.getElementById('tdee-in').value) || 0;
+      var act    = parseFloat(document.getElementById('tdee-activity').value);
+
+      if (isNaN(age) || isNaN(lbs) || isNaN(ft)) {
+        errEl.textContent = 'Please fill in all fields.';
+        errEl.style.display = 'block';
+        return;
+      }
+      if (age < 15 || age > 80)  { errEl.textContent = 'Enter a valid age (15–80).';        errEl.style.display = 'block'; return; }
+      if (lbs < 50 || lbs > 999) { errEl.textContent = 'Enter a valid weight (50–999 lbs).'; errEl.style.display = 'block'; return; }
+      if (ft  < 3  || ft  > 8)   { errEl.textContent = 'Enter a valid height.';              errEl.style.display = 'block'; return; }
+
+      var kg = lbs * 0.453592;
+      var cm = (ft * 12 + inches) * 2.54;
+
+      var bmr = tdeeSex === 'male'
+        ? (10 * kg) + (6.25 * cm) - (5 * age) + 5
+        : (10 * kg) + (6.25 * cm) - (5 * age) - 161;
+
+      var tdee = Math.round(bmr * act);
+      var cut  = tdee - 500;
+      var bulk = tdee + 500;
+
+      document.getElementById('res-cut').textContent   = cut.toLocaleString();
+      document.getElementById('res-maint').textContent = tdee.toLocaleString();
+      document.getElementById('res-bulk').textContent  = bulk.toLocaleString();
+      document.getElementById('tdee-bmr-line').textContent =
+        'BMR: ' + Math.round(bmr).toLocaleString() + ' kcal  ·  Multiplier: ' + act;
+
+      var r = document.getElementById('tdee-results');
+      r.style.display = 'block';
+      r.classList.add('visible');
+    }
+    </script>
+
+    <div class="callout accent">
+      <div class="callout-title">The Golden Rule</div>
+      <p>Aim for <strong>1g of protein per 1lb of bodyweight daily</strong> - especially on training days. This is the single most important nutritional lever for building and preserving muscle.<br><br><strong>Example:</strong> Someone who weighs 150 lbs should aim to consume around 150g of protein daily.</p>
+    </div>
+
+    <div class="callout info" style="margin-top:14px;">
+      <div class="callout-title">Hydration</div>
+      <p>As a baseline — <strong>take your bodyweight in lbs and divide by 2</strong> — aim to drink this number in ounces of water per day. Increase this number on training days.<br><br><strong>Example:</strong> Someone who weighs 150 lbs should aim to drink at least 75 oz of water daily.</p>
+    </div>
+
+    <div class="nutr-section-label">Nutrition Table Cheat Sheet</div>
+    <p style="font-size:10px;color:var(--muted);margin-bottom:10px;font-family:'DM Mono',monospace;letter-spacing:0.06em;">All values raw / uncooked · Source: MyFitnessPal</p>
+	<p>I recommend using a food scale or measuring cups to count calories more accurately. Below is an list of common foods and their average nutrition information, use the nutrition labels & portions from the foods you are consuming for a more accurate calorie and macro count.</p>
+    
+    <!-- ── MEAT ── -->
+    <div class="nutr-section-label" style="margin-top:4px;">Meat</div>
+    <table class="protein-table">
+      <colgroup>
+        <col class="col-food"><col class="col-portion"><col class="col-cal">
+        <col class="col-carbs"><col class="col-fat"><col class="col-protein">
+      </colgroup>
+      <thead><tr><th>Food (Raw)</th><th>Portion</th><th>Calories</th><th>Carbs</th><th>Fat</th><th>Protein</th></tr></thead>
+      <tbody>
+        
+        <tr data-base-g="113.0" data-cal="332" data-carbs="0" data-fat="28" data-prot="19" data-liquid="false"><td class="food-name">Beef (70% lean)</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-0">0</td><td id="carbs-0">0g</td><td id="fat-0">0g</td><td class="protein-val" id="prot-0">0g</td></tr>
+        <tr data-base-g="113.0" data-cal="287" data-carbs="0" data-fat="23" data-prot="19" data-liquid="false"><td class="food-name">Beef (80% lean)</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-1">0</td><td id="carbs-1">0g</td><td id="fat-1">0g</td><td class="protein-val" id="prot-1">0g</td></tr>
+        <tr data-base-g="113.0" data-cal="199" data-carbs="0" data-fat="11" data-prot="25" data-liquid="false"><td class="food-name">Beef (90% lean)</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-2">0</td><td id="carbs-2">0g</td><td id="fat-2">0g</td><td class="protein-val" id="prot-2">0g</td></tr>
+        <tr data-base-g="113.0" data-cal="124" data-carbs="0" data-fat="1" data-prot="26" data-liquid="false"><td class="food-name">Chicken Breast</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-3">0</td><td id="carbs-3">0g</td><td id="fat-3">0g</td><td class="protein-val" id="prot-3">0g</td></tr>
+        <tr data-base-g="113.0" data-cal="155" data-carbs="0" data-fat="8" data-prot="20" data-liquid="false"><td class="food-name">Chicken Thigh</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-4">0</td><td id="carbs-4">0g</td><td id="fat-4">0g</td><td class="protein-val" id="prot-4">0g</td></tr>
+        <tr data-base-g="0" data-cal="72" data-carbs="0" data-fat="5" data-prot="6"><td class="food-name">Egg (whole)</td><td class="portion-col">1 large</td><td class="cal-val" id="cal-5">0</td><td id="carbs-5">0g</td><td id="fat-5">0g</td><td class="protein-val" id="prot-5">0g</td></tr>
+        <tr data-base-g="243.0" data-cal="126" data-carbs="2" data-fat="0" data-prot="26" data-liquid="false"><td class="food-name">Egg Whites</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-6">0</td><td id="carbs-6">0g</td><td id="fat-6">0g</td><td class="protein-val" id="prot-6">0g</td></tr>
+        <tr data-base-g="113.0" data-cal="229" data-carbs="0" data-fat="15" data-prot="22" data-liquid="false"><td class="food-name">Lamb</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-7">0</td><td id="carbs-7">0g</td><td id="fat-7">0g</td><td class="protein-val" id="prot-7">0g</td></tr>
+        <tr data-base-g="113.0" data-cal="136" data-carbs="0" data-fat="4" data-prot="23" data-liquid="false"><td class="food-name">Pork</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-8">0</td><td id="carbs-8">0g</td><td id="fat-8">0g</td><td class="protein-val" id="prot-8">0g</td></tr>
+        <tr data-base-g="113.0" data-cal="120" data-carbs="0" data-fat="1" data-prot="26" data-liquid="false"><td class="food-name">Turkey Breast</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-9">0</td><td id="carbs-9">0g</td><td id="fat-9">0g</td><td class="protein-val" id="prot-9">0g</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ── FISH ── -->
+    <div class="nutr-section-label" style="margin-top:10px;">Fish &amp; Seafood</div>
+    <table class="protein-table">
+      <colgroup>
+        <col class="col-food"><col class="col-portion"><col class="col-cal">
+        <col class="col-carbs"><col class="col-fat"><col class="col-protein">
+      </colgroup>
+      <thead><tr><th>Food (Raw)</th><th>Portion</th><th>Calories</th><th>Carbs</th><th>Fat</th><th>Protein</th></tr></thead>
+      <tbody>
+        <tr data-base-g="113.0" data-cal="166" data-carbs="0" data-fat="8" data-prot="23" data-liquid="false"><td class="food-name">Salmon</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-10">0</td><td id="carbs-10">0g</td><td id="fat-10">0g</td><td class="protein-val" id="prot-10">0g</td></tr>
+        <tr data-base-g="113.0" data-cal="112" data-carbs="1" data-fat="1" data-prot="24" data-liquid="false"><td class="food-name">Shrimp</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-11">0</td><td id="carbs-11">0g</td><td id="fat-11">0g</td><td class="protein-val" id="prot-11">0g</td></tr>
+        <tr data-base-g="113.0" data-cal="109" data-carbs="0" data-fat="2" data-prot="23" data-liquid="false"><td class="food-name">Tilapia</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-12">0</td><td id="carbs-12">0g</td><td id="fat-12">0g</td><td class="protein-val" id="prot-12">0g</td></tr>
+        <tr data-base-g="113.0" data-cal="109" data-carbs="0" data-fat="1" data-prot="24" data-liquid="false"><td class="food-name">Tuna (canned)</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-13">0</td><td id="carbs-13">0g</td><td id="fat-13">0g</td><td class="protein-val" id="prot-13">0g</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ── DAIRY ── -->
+    <div class="nutr-section-label" style="margin-top:10px;">Dairy</div>
+    <table class="protein-table">
+      <colgroup>
+        <col class="col-food"><col class="col-portion"><col class="col-cal">
+        <col class="col-carbs"><col class="col-fat"><col class="col-protein">
+      </colgroup>
+      <thead><tr><th>Food (Raw)</th><th>Portion</th><th>Calories</th><th>Carbs</th><th>Fat</th><th>Protein</th></tr></thead>
+      <tbody>
+        <tr data-base-g="240.0" data-cal="30" data-carbs="1" data-fat="3" data-prot="1" data-liquid="true"><td class="food-name">Almond Milk</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-14">0</td><td id="carbs-14">0g</td><td id="fat-14">0g</td><td class="protein-val" id="prot-14">0g</td></tr>
+        <tr data-base-g="19.0" data-cal="65" data-carbs="1" data-fat="5" data-prot="4" data-liquid="false"><td class="food-name">American Cheese</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-15">0</td><td id="carbs-15">0g</td><td id="fat-15">0g</td><td class="protein-val" id="prot-15">0g</td></tr>
+        <tr data-base-g="113.0" data-cal="455" data-carbs="1" data-fat="37" data-prot="28" data-liquid="false"><td class="food-name">Cheddar Cheese (shredded)</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-16">0</td><td id="carbs-16">0g</td><td id="fat-16">0g</td><td class="protein-val" id="prot-16">0g</td></tr>
+        <tr data-base-g="240.0" data-cal="45" data-carbs="2" data-fat="4" data-prot="0" data-liquid="true"><td class="food-name">Coconut Milk</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-17">0</td><td id="carbs-17">0g</td><td id="fat-17">0g</td><td class="protein-val" id="prot-17">0g</td></tr>
+        <tr data-base-g="226.0" data-cal="163" data-carbs="6" data-fat="2" data-prot="28" data-liquid="false"><td class="food-name">Cottage Cheese (low-fat)</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-18">0</td><td id="carbs-18">0g</td><td id="fat-18">0g</td><td class="protein-val" id="prot-18">0g</td></tr>
+        <tr data-base-g="227.0" data-cal="130" data-carbs="9" data-fat="0" data-prot="22" data-liquid="false"><td class="food-name">Greek Yogurt (non-fat)</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-19">0</td><td id="carbs-19">0g</td><td id="fat-19">0g</td><td class="protein-val" id="prot-19">0g</td></tr>
+        <tr data-base-g="244.0" data-cal="83" data-carbs="12" data-fat="0" data-prot="8" data-liquid="true"><td class="food-name">Skim Milk</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-20">0</td><td id="carbs-20">0g</td><td id="fat-20">0g</td><td class="protein-val" id="prot-20">0g</td></tr>
+        <tr data-base-g="240.0" data-cal="80" data-carbs="4" data-fat="4" data-prot="7" data-liquid="true"><td class="food-name">Soy Milk</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-21">0</td><td id="carbs-21">0g</td><td id="fat-21">0g</td><td class="protein-val" id="prot-21">0g</td></tr>
+        <tr data-base-g="244.0" data-cal="149" data-carbs="12" data-fat="8" data-prot="8" data-liquid="true"><td class="food-name">Whole Milk</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-22">0</td><td id="carbs-22">0g</td><td id="fat-22">0g</td><td class="protein-val" id="prot-22">0g</td></tr>
+        <tr data-base-g="244.0" data-cal="122" data-carbs="12" data-fat="5" data-prot="8" data-liquid="true"><td class="food-name">2% Milk</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-23">0</td><td id="carbs-23">0g</td><td id="fat-23">0g</td><td class="protein-val" id="prot-23">0g</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ── FRUIT ── -->
+    <div class="nutr-section-label" style="margin-top:10px;">Fruit</div>
+    <table class="protein-table">
+      <colgroup>
+        <col class="col-food"><col class="col-portion"><col class="col-cal">
+        <col class="col-carbs"><col class="col-fat"><col class="col-protein">
+      </colgroup>
+      <thead><tr><th>Food (Raw)</th><th>Portion</th><th>Calories</th><th>Carbs</th><th>Fat</th><th>Protein</th></tr></thead>
+      <tbody>
+        <tr data-base-g="125.0" data-cal="65" data-carbs="17" data-fat="0" data-prot="0" data-liquid="false"><td class="food-name">Apple</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-24">0</td><td id="carbs-24">0g</td><td id="fat-24">0g</td><td class="protein-val" id="prot-24">0g</td></tr>
+        <tr data-base-g="155.0" data-cal="74" data-carbs="17" data-fat="1" data-prot="2" data-liquid="false"><td class="food-name">Apricot</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-25">0</td><td id="carbs-25">0g</td><td id="fat-25">0g</td><td class="protein-val" id="prot-25">0g</td></tr>
+        <tr data-base-g="150.0" data-cal="134" data-carbs="34" data-fat="0" data-prot="2" data-liquid="false"><td class="food-name">Banana</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-26">0</td><td id="carbs-26">0g</td><td id="fat-26">0g</td><td class="protein-val" id="prot-26">0g</td></tr>
+        <tr data-base-g="144.0" data-cal="62" data-carbs="14" data-fat="1" data-prot="2" data-liquid="false"><td class="food-name">Blackberries</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-27">0</td><td id="carbs-27">0g</td><td id="fat-27">0g</td><td class="protein-val" id="prot-27">0g</td></tr>
+        <tr data-base-g="148.0" data-cal="84" data-carbs="21" data-fat="0" data-prot="1" data-liquid="false"><td class="food-name">Blueberries</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-28">0</td><td id="carbs-28">0g</td><td id="fat-28">0g</td><td class="protein-val" id="prot-28">0g</td></tr>
+        <tr data-base-g="160.0" data-cal="54" data-carbs="13" data-fat="0" data-prot="1" data-liquid="false"><td class="food-name">Cantaloupe</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-29">0</td><td id="carbs-29">0g</td><td id="fat-29">0g</td><td class="protein-val" id="prot-29">0g</td></tr>
+        <tr data-base-g="154.0" data-cal="97" data-carbs="25" data-fat="0" data-prot="2" data-liquid="false"><td class="food-name">Cherries</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-30">0</td><td id="carbs-30">0g</td><td id="fat-30">0g</td><td class="protein-val" id="prot-30">0g</td></tr>
+        <tr data-base-g="151.0" data-cal="104" data-carbs="27" data-fat="0" data-prot="1" data-liquid="false"><td class="food-name">Grapes</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-31">0</td><td id="carbs-31">0g</td><td id="fat-31">0g</td><td class="protein-val" id="prot-31">0g</td></tr>
+        <tr data-base-g="170.0" data-cal="61" data-carbs="15" data-fat="0" data-prot="1" data-liquid="false"><td class="food-name">Honeydew</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-32">0</td><td id="carbs-32">0g</td><td id="fat-32">0g</td><td class="protein-val" id="prot-32">0g</td></tr>
+        <tr data-base-g="186.0" data-cal="112" data-carbs="26" data-fat="1" data-prot="2" data-liquid="false"><td class="food-name">Kiwi</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-33">0</td><td id="carbs-33">0g</td><td id="fat-33">0g</td><td class="protein-val" id="prot-33">0g</td></tr>
+        <tr data-base-g="180.0" data-cal="85" data-carbs="21" data-fat="0" data-prot="2" data-liquid="false"><td class="food-name">Orange</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-34">0</td><td id="carbs-34">0g</td><td id="fat-34">0g</td><td class="protein-val" id="prot-34">0g</td></tr>
+        <tr data-base-g="140.0" data-cal="80" data-carbs="21" data-fat="0" data-prot="1" data-liquid="false"><td class="food-name">Pear</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-35">0</td><td id="carbs-35">0g</td><td id="fat-35">0g</td><td class="protein-val" id="prot-35">0g</td></tr>
+        <tr data-base-g="165.0" data-cal="82" data-carbs="22" data-fat="0" data-prot="1" data-liquid="false"><td class="food-name">Pineapple</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-36">0</td><td id="carbs-36">0g</td><td id="fat-36">0g</td><td class="protein-val" id="prot-36">0g</td></tr>
+        <tr data-base-g="165.0" data-cal="76" data-carbs="19" data-fat="0" data-prot="1" data-liquid="false"><td class="food-name">Plum</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-37">0</td><td id="carbs-37">0g</td><td id="fat-37">0g</td><td class="protein-val" id="prot-37">0g</td></tr>
+        <tr data-base-g="165.0" data-cal="493" data-carbs="130" data-fat="0" data-prot="5" data-liquid="false"><td class="food-name">Raisins</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-38">0</td><td id="carbs-38">0g</td><td id="fat-38">0g</td><td class="protein-val" id="prot-38">0g</td></tr>
+        <tr data-base-g="123.0" data-cal="64" data-carbs="15" data-fat="1" data-prot="1" data-liquid="false"><td class="food-name">Raspberries</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-39">0</td><td id="carbs-39">0g</td><td id="fat-39">0g</td><td class="protein-val" id="prot-39">0g</td></tr>
+        <tr data-base-g="152.0" data-cal="49" data-carbs="12" data-fat="0" data-prot="1" data-liquid="false"><td class="food-name">Strawberries</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-40">0</td><td id="carbs-40">0g</td><td id="fat-40">0g</td><td class="protein-val" id="prot-40">0g</td></tr>
+        <tr data-base-g="154.0" data-cal="46" data-carbs="12" data-fat="0" data-prot="1" data-liquid="false"><td class="food-name">Watermelon</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-41">0</td><td id="carbs-41">0g</td><td id="fat-41">0g</td><td class="protein-val" id="prot-41">0g</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ── VEGETABLES ── -->
+    <div class="nutr-section-label" style="margin-top:10px;">Vegetables</div>
+    <table class="protein-table">
+      <colgroup>
+        <col class="col-food"><col class="col-portion"><col class="col-cal">
+        <col class="col-carbs"><col class="col-fat"><col class="col-protein">
+      </colgroup>
+      <thead><tr><th>Food (Raw)</th><th>Portion</th><th>Calories</th><th>Carbs</th><th>Fat</th><th>Protein</th></tr></thead>
+      <tbody>
+        <tr data-base-g="134.0" data-cal="27" data-carbs="5" data-fat="0" data-prot="3" data-liquid="false"><td class="food-name">Asparagus</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-42">0</td><td id="carbs-42">0g</td><td id="fat-42">0g</td><td class="protein-val" id="prot-42">0g</td></tr>
+        <tr data-base-g="150.0" data-cal="240" data-carbs="13" data-fat="22" data-prot="3" data-liquid="false"><td class="food-name">Avocado</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-43">0</td><td id="carbs-43">0g</td><td id="fat-43">0g</td><td class="protein-val" id="prot-43">0g</td></tr>
+        <tr data-base-g="149.0" data-cal="46" data-carbs="11" data-fat="0" data-prot="1" data-liquid="false"><td class="food-name">Bell Pepper</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-44">0</td><td id="carbs-44">0g</td><td id="fat-44">0g</td><td class="protein-val" id="prot-44">0g</td></tr>
+        <tr data-base-g="91.0" data-cal="31" data-carbs="6" data-fat="0" data-prot="3" data-liquid="false"><td class="food-name">Broccoli</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-45">0</td><td id="carbs-45">0g</td><td id="fat-45">0g</td><td class="protein-val" id="prot-45">0g</td></tr>
+        <tr data-base-g="107.0" data-cal="27" data-carbs="5" data-fat="0" data-prot="2" data-liquid="false"><td class="food-name">Cauliflower</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-46">0</td><td id="carbs-46">0g</td><td id="fat-46">0g</td><td class="protein-val" id="prot-46">0g</td></tr>
+        <tr data-base-g="128.0" data-cal="52" data-carbs="12" data-fat="0" data-prot="1" data-liquid="false"><td class="food-name">Carrots</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-47">0</td><td id="carbs-47">0g</td><td id="fat-47">0g</td><td class="protein-val" id="prot-47">0g</td></tr>
+        <tr data-base-g="154.0" data-cal="132" data-carbs="29" data-fat="2" data-prot="5" data-liquid="false"><td class="food-name">Corn</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-48">0</td><td id="carbs-48">0g</td><td id="fat-48">0g</td><td class="protein-val" id="prot-48">0g</td></tr>
+        <tr data-base-g="119.0" data-cal="16" data-carbs="4" data-fat="0" data-prot="1" data-liquid="false"><td class="food-name">Cucumber</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-49">0</td><td id="carbs-49">0g</td><td id="fat-49">0g</td><td class="protein-val" id="prot-49">0g</td></tr>
+        <tr data-base-g="100.0" data-cal="31" data-carbs="7" data-fat="0" data-prot="2" data-liquid="false"><td class="food-name">Green Beans</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-50">0</td><td id="carbs-50">0g</td><td id="fat-50">0g</td><td class="protein-val" id="prot-50">0g</td></tr>
+        <tr data-base-g="47.0" data-cal="8" data-carbs="1" data-fat="0" data-prot="1" data-liquid="false"><td class="food-name">Lettuce</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-51">0</td><td id="carbs-51">0g</td><td id="fat-51">0g</td><td class="protein-val" id="prot-51">0g</td></tr>
+        <tr data-base-g="70.0" data-cal="15" data-carbs="2" data-fat="0" data-prot="2" data-liquid="false"><td class="food-name">Mushrooms</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-52">0</td><td id="carbs-52">0g</td><td id="fat-52">0g</td><td class="protein-val" id="prot-52">0g</td></tr>
+        <tr data-base-g="135.0" data-cal="155" data-carbs="10" data-fat="14" data-prot="1" data-liquid="false"><td class="food-name">Olives</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-53">0</td><td id="carbs-53">0g</td><td id="fat-53">0g</td><td class="protein-val" id="prot-53">0g</td></tr>
+        <tr data-base-g="160.0" data-cal="64" data-carbs="15" data-fat="0" data-prot="2" data-liquid="false"><td class="food-name">Onion</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-54">0</td><td id="carbs-54">0g</td><td id="fat-54">0g</td><td class="protein-val" id="prot-54">0g</td></tr>
+        <tr data-base-g="145.0" data-cal="117" data-carbs="21" data-fat="1" data-prot="8" data-liquid="false"><td class="food-name">Peas</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-55">0</td><td id="carbs-55">0g</td><td id="fat-55">0g</td><td class="protein-val" id="prot-55">0g</td></tr>
+        <tr data-base-g="180.0" data-cal="32" data-carbs="7" data-fat="0" data-prot="2" data-liquid="false"><td class="food-name">Tomato</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-56">0</td><td id="carbs-56">0g</td><td id="fat-56">0g</td><td class="protein-val" id="prot-56">0g</td></tr>
+        <tr data-base-g="30.0" data-cal="7" data-carbs="1" data-fat="0" data-prot="1" data-liquid="false"><td class="food-name">Spinach</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-57">0</td><td id="carbs-57">0g</td><td id="fat-57">0g</td><td class="protein-val" id="prot-57">0g</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ── STARCHES ── -->
+    <div class="nutr-section-label" style="margin-top:10px;">Starches &amp; Grains</div>
+    <table class="protein-table">
+      <colgroup>
+        <col class="col-food"><col class="col-portion"><col class="col-cal">
+        <col class="col-carbs"><col class="col-fat"><col class="col-protein">
+      </colgroup>
+      <thead><tr><th>Food (Raw)</th><th>Portion</th><th>Calories</th><th>Carbs</th><th>Fat</th><th>Protein</th></tr></thead>
+      <tbody>
+        <tr data-base-g="105.0" data-cal="270" data-carbs="53" data-fat="2" data-prot="10" data-liquid="false"><td class="food-name">Bagel (plain)</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-58">0</td><td id="carbs-58">0g</td><td id="fat-58">0g</td><td class="protein-val" id="prot-58">0g</td></tr>
+        <tr data-base-g="0" data-cal="133" data-carbs="25" data-fat="2" data-prot="4"><td class="food-name">Bread</td><td class="portion-col">2 slices</td><td class="cal-val" id="cal-59">0</td><td id="carbs-59">0g</td><td id="fat-59">0g</td><td class="protein-val" id="prot-59">0g</td></tr>
+        <tr data-base-g="185.0" data-cal="685" data-carbs="143" data-fat="5" data-prot="15" data-liquid="false"><td class="food-name">Brown Rice (dry)</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-60">0</td><td id="carbs-60">0g</td><td id="fat-60">0g</td><td class="protein-val" id="prot-60">0g</td></tr>
+        <tr data-base-g="173.0" data-cal="650" data-carbs="134" data-fat="1" data-prot="22" data-liquid="false"><td class="food-name">Couscous (dry)</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-61">0</td><td id="carbs-61">0g</td><td id="fat-61">0g</td><td class="protein-val" id="prot-61">0g</td></tr>
+        <tr data-base-g="81.0" data-cal="307" data-carbs="55" data-fat="5" data-prot="11" data-liquid="false"><td class="food-name">Oats (dry)</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-62">0</td><td id="carbs-62">0g</td><td id="fat-62">0g</td><td class="protein-val" id="prot-62">0g</td></tr>
+        <tr data-base-g="91.0" data-cal="338" data-carbs="67" data-fat="2" data-prot="12" data-liquid="false"><td class="food-name">Pasta (dry)</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-63">0</td><td id="carbs-63">0g</td><td id="fat-63">0g</td><td class="protein-val" id="prot-63">0g</td></tr>
+        <tr data-base-g="150.0" data-cal="116" data-carbs="26" data-fat="0" data-prot="3" data-liquid="false"><td class="food-name">Potato</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-64">0</td><td id="carbs-64">0g</td><td id="fat-64">0g</td><td class="protein-val" id="prot-64">0g</td></tr>
+        <tr data-base-g="170.0" data-cal="626" data-carbs="109" data-fat="10" data-prot="24" data-liquid="false"><td class="food-name">Quinoa (dry)</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-65">0</td><td id="carbs-65">0g</td><td id="fat-65">0g</td><td class="protein-val" id="prot-65">0g</td></tr>
+        <tr data-base-g="133.0" data-cal="114" data-carbs="27" data-fat="0" data-prot="2" data-liquid="false"><td class="food-name">Sweet Potato</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-66">0</td><td id="carbs-66">0g</td><td id="fat-66">0g</td><td class="protein-val" id="prot-66">0g</td></tr>
+        <tr data-base-g="185.0" data-cal="675" data-carbs="148" data-fat="1" data-prot="13" data-liquid="false"><td class="food-name">White Rice (dry)</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-67">0</td><td id="carbs-67">0g</td><td id="fat-67">0g</td><td class="protein-val" id="prot-67">0g</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ── NUTS & SEEDS ── -->
+    <div class="nutr-section-label" style="margin-top:10px;">Beans, Nuts &amp; Seeds</div>
+    <table class="protein-table">
+      <colgroup>
+        <col class="col-food"><col class="col-portion"><col class="col-cal">
+        <col class="col-carbs"><col class="col-fat"><col class="col-protein">
+      </colgroup>
+      <thead><tr><th>Food (Raw)</th><th>Portion</th><th>Calories</th><th>Carbs</th><th>Fat</th><th>Protein</th></tr></thead>
+      <tbody>
+      	<tr data-base-g="143.0" data-cal="828" data-carbs="31" data-fat="71" data-prot="30" data-liquid="false"><td class="food-name">Almonds</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-68">0</td><td id="carbs-68">0g</td><td id="fat-68">0g</td><td class="protein-val" id="prot-68">0g</td></tr>
+        <tr data-base-g="194.0" data-cal="662" data-carbs="121" data-fat="3" data-prot="42" data-liquid="false"><td class="food-name">Black Beans (dry)</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-69">0</td><td id="carbs-69">0g</td><td id="fat-69">0g</td><td class="protein-val" id="prot-69">0g</td></tr>
+        <tr data-base-g="137.0" data-cal="786" data-carbs="44" data-fat="63" data-prot="21" data-liquid="false"><td class="food-name">Cashews</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-70">0</td><td id="carbs-70">0g</td><td id="fat-70">0g</td><td class="protein-val" id="prot-70">0g</td></tr>
+        <tr data-base-g="200.0" data-cal="729" data-carbs="121" data-fat="12" data-prot="39" data-liquid="false"><td class="food-name">Chickpeas (dry)</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-71">0</td><td id="carbs-71">0g</td><td id="fat-71">0g</td><td class="protein-val" id="prot-71">0g</td></tr>
+        <tr data-base-g="168.0" data-cal="897" data-carbs="49" data-fat="70" data-prot="31" data-liquid="false"><td class="food-name">Flax Seeds</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-72">0</td><td id="carbs-72">0g</td><td id="fat-72">0g</td><td class="protein-val" id="prot-72">0g</td></tr>
+        <tr data-base-g="246.0" data-cal="408" data-carbs="36" data-fat="24" data-prot="19" data-liquid="false"><td class="food-name">Hummus</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-73">0</td><td id="carbs-73">0g</td><td id="fat-73">0g</td><td class="protein-val" id="prot-73">0g</td></tr>
+        <tr data-base-g="192.0" data-cal="678" data-carbs="115" data-fat="2" data-prot="48" data-liquid="false"><td class="food-name">Lentils (dry)</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-74">0</td><td id="carbs-74">0g</td><td id="fat-74">0g</td><td class="protein-val" id="prot-74">0g</td></tr>
+        <tr data-base-g="146.0" data-cal="828" data-carbs="24" data-fat="72" data-prot="38" data-liquid="false"><td class="food-name">Peanuts</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-75">0</td><td id="carbs-75">0g</td><td id="fat-75">0g</td><td class="protein-val" id="prot-75">0g</td></tr>
+        <tr data-base-g="129.0" data-cal="721" data-carbs="25" data-fat="62" data-prot="34" data-liquid="false"><td class="food-name">Pumpkin Seeds</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-76">0</td><td id="carbs-76">0g</td><td id="fat-76">0g</td><td class="protein-val" id="prot-76">0g</td></tr>
+        <tr data-base-g="184.0" data-cal="619" data-carbs="112" data-fat="2" data-prot="43" data-liquid="false"><td class="food-name">Red Kidney Beans (dry)</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-77">0</td><td id="carbs-77">0g</td><td id="fat-77">0g</td><td class="protein-val" id="prot-77">0g</td></tr>
+        <tr data-base-g="140.0" data-cal="818" data-carbs="28" data-fat="71" data-prot="29" data-liquid="false"><td class="food-name">Sunflower Seeds</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-78">0</td><td id="carbs-78">0g</td><td id="fat-78">0g</td><td class="protein-val" id="prot-78">0g</td></tr>
+        <tr data-base-g="100.0" data-cal="654" data-carbs="14" data-fat="65" data-prot="15" data-liquid="false"><td class="food-name">Walnuts</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-79">0</td><td id="carbs-79">0g</td><td id="fat-79">0g</td><td class="protein-val" id="prot-79">0g</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ── VEGAN ── -->
+    <div class="nutr-section-label" style="margin-top:10px;">Vegan</div>
+    <table class="protein-table">
+      <colgroup>
+        <col class="col-food"><col class="col-portion"><col class="col-cal">
+        <col class="col-carbs"><col class="col-fat"><col class="col-protein">
+      </colgroup>
+      <thead><tr><th>Food (Raw)</th><th>Portion</th><th>Calories</th><th>Carbs</th><th>Fat</th><th>Protein</th></tr></thead>
+      <tbody>
+        <tr data-base-g="155.0" data-cal="189" data-carbs="15" data-fat="8" data-prot="17" data-liquid="false"><td class="food-name">Edamame</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-80">0</td><td id="carbs-80">0g</td><td id="fat-80">0g</td><td class="protein-val" id="prot-80">0g</td></tr>
+        <tr data-base-g="140.0" data-cal="240" data-carbs="8" data-fat="2" data-prot="46" data-liquid="false"><td class="food-name">Seitan</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-81">0</td><td id="carbs-81">0g</td><td id="fat-81">0g</td><td class="protein-val" id="prot-81">0g</td></tr>
+        <tr data-base-g="166.0" data-cal="320" data-carbs="16" data-fat="18" data-prot="30" data-liquid="false"><td class="food-name">Tempeh</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-82">0</td><td id="carbs-82">0g</td><td id="fat-82">0g</td><td class="protein-val" id="prot-82">0g</td></tr>
+        <tr data-base-g="252.0" data-cal="176" data-carbs="4" data-fat="10" data-prot="19" data-liquid="false"><td class="food-name">Tofu (firm)</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-83">0</td><td id="carbs-83">0g</td><td id="fat-83">0g</td><td class="protein-val" id="prot-83">0g</td></tr>
+      </tbody>
+    </table>
+
+    <div class="nutr-section-label" style="margin-top:10px;">Condiments &amp; Extras</div>
+    <table class="protein-table">
+      <colgroup>
+        <col class="col-food"><col class="col-portion"><col class="col-cal">
+        <col class="col-carbs"><col class="col-fat"><col class="col-protein">
+      </colgroup>
+      <thead><tr><th>Food (Raw)</th><th>Portion</th><th>Calories</th><th>Carbs</th><th>Fat</th><th>Protein</th></tr></thead>
+      <tbody>
+        <tr data-base-g="15.0" data-cal="29" data-carbs="7" data-fat="0" data-prot="0" data-liquid="false"><td class="food-name">BBQ Sauce</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-84">0</td><td id="carbs-84">0g</td><td id="fat-84">0g</td><td class="protein-val" id="prot-84">0g</td></tr>
+        <tr data-base-g="14.0" data-cal="102" data-carbs="0" data-fat="12" data-prot="0" data-liquid="false"><td class="food-name">Butter</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-85">0</td><td id="carbs-85">0g</td><td id="fat-85">0g</td><td class="protein-val" id="prot-85">0g</td></tr>
+        <tr data-base-g="15.0" data-cal="51" data-carbs="1" data-fat="5" data-prot="1" data-liquid="false"><td class="food-name">Cream Cheese</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-86">0</td><td id="carbs-86">0g</td><td id="fat-86">0g</td><td class="protein-val" id="prot-86">0g</td></tr>
+        <tr data-base-g="15.0" data-cal="3" data-carbs="1" data-fat="0" data-prot="0" data-liquid="false"><td class="food-name">Hot Sauce</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-87">0</td><td id="carbs-87">0g</td><td id="fat-87">0g</td><td class="protein-val" id="prot-87">0g</td></tr>
+        <tr data-base-g="20.0" data-cal="56" data-carbs="14" data-fat="0" data-prot="0" data-liquid="false"><td class="food-name">Jelly / Jam</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-88">0</td><td id="carbs-88">0g</td><td id="fat-88">0g</td><td class="protein-val" id="prot-88">0g</td></tr>
+        <tr data-base-g="15.0" data-cal="19" data-carbs="5" data-fat="0" data-prot="0" data-liquid="false"><td class="food-name">Ketchup</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-89">0</td><td id="carbs-89">0g</td><td id="fat-89">0g</td><td class="protein-val" id="prot-89">0g</td></tr>
+        <tr data-base-g="14.0" data-cal="94" data-carbs="0" data-fat="10" data-prot="0" data-liquid="false"><td class="food-name">Mayo</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-90">0</td><td id="carbs-90">0g</td><td id="fat-90">0g</td><td class="protein-val" id="prot-90">0g</td></tr>
+        <tr data-base-g="15.0" data-cal="9" data-carbs="1" data-fat="0" data-prot="1" data-liquid="false"><td class="food-name">Mustard</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-91">0</td><td id="carbs-91">0g</td><td id="fat-91">0g</td><td class="protein-val" id="prot-91">0g</td></tr>
+        <tr data-base-g="14.0" data-cal="119" data-carbs="0" data-fat="14" data-prot="0" data-liquid="false"><td class="food-name">Olive Oil</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-92">0</td><td id="carbs-92">0g</td><td id="fat-92">0g</td><td class="protein-val" id="prot-92">0g</td></tr>
+        <tr data-base-g="16.0" data-cal="94" data-carbs="3" data-fat="8" data-prot="4" data-liquid="false"><td class="food-name">Peanut Butter</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-93">0</td><td id="carbs-93">0g</td><td id="fat-93">0g</td><td class="protein-val" id="prot-93">0g</td></tr>
+        <tr data-base-g="15.0" data-cal="73" data-carbs="1" data-fat="8" data-prot="0" data-liquid="false"><td class="food-name">Salad Dressing</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-94">0</td><td id="carbs-94">0g</td><td id="fat-94">0g</td><td class="protein-val" id="prot-94">0g</td></tr>
+        <tr data-base-g="16.0" data-cal="11" data-carbs="1" data-fat="0" data-prot="2" data-liquid="false"><td class="food-name">Soy Sauce</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-95">0</td><td id="carbs-95">0g</td><td id="fat-95">0g</td><td class="protein-val" id="prot-95">0g</td></tr>
+        <tr data-base-g="17.0" data-cal="15" data-carbs="3" data-fat="0" data-prot="0" data-liquid="false"><td class="food-name">Steak Sauce</td><td class="portion-input-cell"><div class="portion-ctrl"><input class="portion-num" type="number" min="0" step="any" value="0" oninput="updateRow(this)" onchange="updateRow(this)"><select class="portion-unit" onchange="updateRow(this)"><option value="" disabled selected hidden>select unit</option><option value="g">g</option><option value="oz">oz</option><option value="floz">fl oz</option><option value="ml">ml</option><option value="cup">cup</option></select></div></td><td class="cal-val" id="cal-96">0</td><td id="carbs-96">0g</td><td id="fat-96">0g</td><td class="protein-val" id="prot-96">0g</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 9 — CHAPTER 07: SUPPLEMENTS
+══════════════════════════════════════════════════════════ -->
+<div id="ch07" class="chapter" style="page-break-before: always; display:flex; flex-direction:column; background:var(--black);">
+  <div class="ch-banner" data-num="07">
+    <div class="ch-tag">Chapter 07</div>
+    <div class="ch-title">Supplement Recommendations</div>
+    <div class="ch-desc"><p>Use code <strong>jakefitness</strong> for <strong>15% off</strong> at <strong><a href="https://www.htltsupps.com/?sca_ref=6914215.DZPS6EGR1gMNv" style="color:var(--accent);text-decoration:underline;text-underline-offset:2px;">htltsupps.com</a></strong></p></div>
+  </div>
+  <div class="ch-content" style="display:flex; flex-direction:column; flex:1;">
+    <div class="callout accent">
+      <div class="callout-title">Important</div>
+      <p><strong>No supplement can guarantee results.</strong> These have all benefited me but all are completely optional. Please reach out with any questions and I'll be happy to educate you on which supplements could benefit you and help you reach your goals.</p>
+    </div>
+    <div class="supp-rows">
+      <div class="supp-row">
+        <div class="supp-category">Proteins</div>
+        <div class="supp-cards">
+          <div class="supp-card"><h4><a href="https://www.htltsupps.com/products/cicobar-protein-bar-12-pack" target="_blank" style="color:var(--white);text-decoration:none;">CICO Bar</a></h4><p>High protein snack bar - great for anyone needing convenient on-the-go protein. <strong>Per Bar: 230 Calories, 20g Protein</strong></p></div>
+          <div class="supp-card"><h4><a href="https://www.htltsupps.com/products/casein-whey-protein?variant=42469002313941" target="_blank" style="color:var(--white);text-decoration:none;">Protein Powder (Whey/Casein)</a></h4><p>A whey and casein blend. Shakes, blends, bakes, and mixes well in recipes. <strong>Per Scoop: 120 Calories, 25g Protein</strong></p></div>
+          <div class="supp-card"><h4><a href="https://www.htltsupps.com/products/vegan-protein-chocolate-pb?variant=43250363400405" target="_blank" style="color:var(--white);text-decoration:none;">Vegan Protein Powder</a></h4><p>Plant based protein - ideal for vegans, vegetarians, or as a whey alternative. <strong>Per Scoop: 130 Calories, 21g Protein</strong></p></div>
+        </div>
+      </div>
+      <div class="supp-row">
+        <div class="supp-category">Performance &amp; Strength</div>
+        <div class="supp-cards">
+          <div class="supp-card"><h4><a href="https://www.htltsupps.com/products/creatine-monohydrate?variant=42578497470677" target="_blank" style="color:var(--white);text-decoration:none;">Creatine Monohydrate</a></h4><p>Supports strength and overall workout performance. One of the most researched supplements available.</p></div>
+          <div class="supp-card"><h4><a href="https://www.htltsupps.com/collections/preworkout/products/pre-workout-3-0?variant=48616629731541" target="_blank" style="color:var(--white);text-decoration:none;">Pre Workout</a></h4><p>Boosts pumps and focus. Available in high stimulant or non stimulant formulas.</p></div>
+          <div class="supp-card"><h4><a href="https://www.htltsupps.com/products/go2-max-peak-endurance-support?variant=43179055087829" target="_blank" style="color:var(--white);text-decoration:none;">GO2 Max</a></h4><p>A nitric oxide boosting supplement that increases energy and endurance.</p></div>
+          <div class="supp-card"><h4><a href="https://www.htltsupps.com/products/turk-builder?variant=45645992329429" target="_blank" style="color:var(--white);text-decoration:none;">Turk Builder</a></h4><p>Turkesterone based supplement that supports lean muscle growth and strength gains.</p></div>
+        </div>
+      </div>
+      <div class="supp-row">
+        <div class="supp-category">Vitamins &amp; Minerals</div>
+        <div class="supp-cards">
+          <div class="supp-card">
+            <h4><a href="https://www.htltsupps.com/products/multivitamin?variant=43913682944213" target="_blank" style="color:var(--white);text-decoration:none;">Multivitamin</a></h4>
+            <p>A comprehensive daily multivitamin covering essential micronutrients to support overall health, immunity, and recovery.</p>
+          </div>
+          <div class="supp-card">
+            <h4><a href="https://www.htltsupps.com/products/greens-superfood?variant=51337807200469" target="_blank" style="color:var(--white);text-decoration:none;">JUIC3D Greens &amp; Reds Powder</a></h4>
+            <p>A superfood blend of greens and reds delivering antioxidants, phytonutrients, and digestive support.</p>
+          </div>
+          <div class="supp-card">
+            <h4><a href="https://www.htltsupps.com/products/perilyte-tropical-fruit-punch?variant=51822358233301" target="_blank" style="color:var(--white);text-decoration:none;">Perilyte | EAA + BCAA + Electrolytes</a></h4>
+            <p>Full spectrum amino acid formula with electrolytes for hydration, muscle recovery, and performance during and after training.</p>
+          </div>
+          <div class="supp-card">
+            <h4><a href="https://www.htltsupps.com/products/n-acetyl-cysteine-nac?variant=44429038649557" target="_blank" style="color:var(--white);text-decoration:none;">N-Acetyl Cysteine (NAC)</a></h4>
+            <p>A powerful antioxidant precursor that supports glutathione production, liver health, and respiratory function.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="footer-bar">
+    <div class="footer-logo">Jake<span>Fitness</span></div>
+    <div class="footer-contact">jakefitness21@gmail.com &nbsp;|&nbsp; @jake_fitness21 &nbsp;|&nbsp; NASM-CPT &amp; CNC</div>
+  </div>
+  </div>
+
+<script>
+/* ── PORTION CALCULATOR ── */
+const UNIT_TO_G = {
+  g:    1,
+  oz:   28.3495,
+  floz: 29.5735,
+  ml:   1,        // treat ml as g (density ~1 for most liquids listed)
+  cup:  240
+};
+
+function updateRow(el) {
+  var tr    = el.closest('tr');
+  var baseG = parseFloat(tr.dataset.baseG);
+  if (!baseG || baseG === 0) return;
+
+  var numEl  = tr.querySelector('.portion-num');
+  var unitEl = tr.querySelector('.portion-unit');
+  var qty    = parseFloat(numEl.value);
+  if (isNaN(qty) || qty < 0) return;
+
+  var unit   = unitEl.value;
+  if (!unit) return;
+  var inputG = qty * UNIT_TO_G[unit];
+  var ratio  = inputG / baseG;
+
+  var baseCal   = parseFloat(tr.dataset.cal);
+  var baseCarbs = parseFloat(tr.dataset.carbs);
+  var baseFat   = parseFloat(tr.dataset.fat);
+  var baseProt  = parseFloat(tr.dataset.prot);
+
+  // find index from the cal cell id
+  var calCell   = tr.querySelector('[id^="cal-"]');
+  if (!calCell) return;
+  var idx = calCell.id.split('-')[1];
+
+  document.getElementById('cal-'  + idx).textContent = Math.round(baseCal   * ratio);
+  document.getElementById('carbs-'+ idx).textContent = Math.round(baseCarbs * ratio) + 'g';
+  document.getElementById('fat-'  + idx).textContent = Math.round(baseFat   * ratio) + 'g';
+  document.getElementById('prot-' + idx).textContent = Math.round(baseProt  * ratio) + 'g';
+}
+</script>
+
+</body>
+</html>
